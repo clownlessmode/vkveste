@@ -36,7 +36,7 @@ async function QuestSection() {
     type: quest.statistics.type,
     difficulty: quest.statistics.difficulty,
     players: quest.statistics.players,
-    background: `url('http://localhost:1338/uploads/2_6d68ff2a53.png')`,
+    background: `url('http://89.104.69.151:1338/uploads/2_6d68ff2a53.png')`,
     link: `/quest/${quest.slug}`,
   }))
 
