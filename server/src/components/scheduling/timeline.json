@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_scheduling_timeline",
+  "info": {
+    "displayName": "Timeline",
+    "description": ""
+  },
+  "attributes": {
+    "timegroups": {
+      "type": "component",
+      "component": "scheduling.timegroup",
+      "repeatable": true
+    },
+    "days": {
+      "type": "string",
+      "required": true,
+      "default": "monday"
+    }
+  }
+}

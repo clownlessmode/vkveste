@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carousel_items",
+  "info": {
+    "singularName": "carousel-item",
+    "pluralName": "carousel-items",
+    "displayName": "Карусель на главной"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "order": {
+      "type": "integer",
+      "min": 1,
+      "required": true,
+      "unique": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_scheduling_timegroup",
+  "info": {
+    "displayName": "Timegroup"
+  },
+  "attributes": {
+    "times": {
+      "type": "string",
+      "required": true,
+      "regex": "^(\\d{2}:\\d{2})(,\\d{2}:\\d{2})*$"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    }
+  }
+}

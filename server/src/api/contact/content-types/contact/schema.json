@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Основная информация",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "baseQuestPrice": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "social": {
+      "displayName": "Социальные сети",
+      "type": "component",
+      "repeatable": false,
+      "component": "social.soczialnye-seti"
+    },
+    "notifyAboutBookingsEmail": {
+      "type": "email",
+      "required": true,
+      "default": "test@mail.ru"
+    }
+  }
+}

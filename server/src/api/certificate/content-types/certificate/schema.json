@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "certificate",
+  "info": {
+    "singularName": "certificate",
+    "pluralName": "certificates",
+    "displayName": "Сертификаты",
+    "description": "Configure available certificate values"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "value": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "description": "Certificate value in rubles"
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set as default selected value"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "description": "Order in which values are displayed"
+    }
+  }
+}

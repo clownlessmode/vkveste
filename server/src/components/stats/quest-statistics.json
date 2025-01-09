@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_stats_quest_statistics",
+  "info": {
+    "displayName": "Quest Statistics"
+  },
+  "attributes": {
+    "playersAllTime": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "length": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "players": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["key", "sword", "skull", "money", "potion", "hat", "drink"],
+      "required": true
+    },
+    "difficulty": {
+      "type": "integer",
+      "min": 1,
+      "max": 3,
+      "required": true
+    },
+    "rating": {
+      "type": "component",
+      "component": "stats.rating",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_social_soczialnye_seti",
+  "info": {
+    "displayName": "Социальные сети",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "instagram": {
+      "type": "string"
+    },
+    "telegram": {
+      "type": "string"
+    },
+    "vkontakte": {
+      "type": "string"
+    }
+  }
+}
