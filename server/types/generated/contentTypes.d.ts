@@ -615,29 +615,89 @@ export interface ApiQuestQuest extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true
   }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
   attributes: {
-    cover: Schema.Attribute.Media<"images" | "files" | "videos" | "audios">
+    cover: Schema.Attribute.Media<"images" | "files" | "videos" | "audios"> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    disabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<"oneToMany", "api::quest.quest"> &
-      Schema.Attribute.Private
-    lore: Schema.Attribute.Text
-    name: Schema.Attribute.String & Schema.Attribute.Required
-    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>
+    disabled: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.DefaultTo<false>
+    locale: Schema.Attribute.String
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::quest.quest">
+    lore: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.DefaultTo<0>
     publishedAt: Schema.Attribute.DateTime
-    quote: Schema.Attribute.String
-    requirements: Schema.Attribute.Component<"requirements.requirements", true>
+    quote: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    requirements: Schema.Attribute.Component<
+      "requirements.requirements",
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     slug: Schema.Attribute.UID<"name"> & Schema.Attribute.Required
     statistics: Schema.Attribute.Component<"stats.quest-statistics", false> &
-      Schema.Attribute.Required
-    timelines: Schema.Attribute.Component<"scheduling.timeline", true>
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    timelines: Schema.Attribute.Component<"scheduling.timeline", true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    widgetLink: Schema.Attribute.String
+    widgetLink: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
   }
 }
 
