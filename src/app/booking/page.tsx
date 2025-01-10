@@ -83,7 +83,7 @@ export default function QuestsPage() {
     <div className="flex flex-col py-[50px] xl:py-[140px]">
       <MaxWidthWrapper className="!max-w-[1480px]">
         <div className="mb-5 flex flex-col gap-y-2.5 border-b border-white/30 pb-2.5 xl:mb-2.5 xl:pb-3">
-          <div className="inline-flex items-center justify-between pb-0 text-[#909090] xl:pb-10">
+          <div className="inline-flex items-center justify-between pb-0 text-[#909090] xl:pb-2.5">
             <span className="text-[17px] font-medium leading-[25.15px] xl:text-[24px] xl:leading-[48px]">
               Расписание - {format(selectedDate, "d MMMM", { locale: ru })} - {format(new Date(selectedDate.getTime() + 29 * 24 * 60 * 60 * 1000), "d MMMM", { locale: ru })}
             </span>
