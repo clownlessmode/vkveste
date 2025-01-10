@@ -187,7 +187,7 @@ const BookingForm = React.memo(function BookingForm({
           slot,
           price: discountedPrice,
           name: data.name,
-          phone: formattedPhone,
+          phone: data.phone,
         })
 
         const result = await submitForm({
