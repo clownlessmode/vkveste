@@ -45,7 +45,7 @@ const CertificatesSection = ({
             </h3>
             {type === "main" && (
               <p className="text-center font-inter text-[9px] leading-[11px] lg:text-[16px] lg:leading-[19px]">
-                Доплату за игру, стоимость которой превышает номинал
+                Доплату за игру, стоимость которой превышает номинальную стоимость
                 сертификата, нужно произвести на месте перед ее началом
               </p>
             )}
