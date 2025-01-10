@@ -85,8 +85,8 @@ export default async function Home() {
               </span>
             </div>
             <div className="relative h-full w-full overflow-hidden rounded-lg lg:rounded-[14px]">
-              <iframe
-                src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=35.912875%2C56.851377&mode=poi&poi%5Bpoint%5D=35.912224%2C56.850895&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D69967307679&source=mapframe&utm_source=mapframe&z=18"
+            <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=35.916239%2C56.850903&mode=poi&poi%5Bpoint%5D=35.912228%2C56.850894&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D69967307679&utm_source=share&z=15.8"
                 width="100%"
                 height="00%"
                 allowFullScreen
