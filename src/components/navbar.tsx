@@ -91,6 +91,7 @@ const NavigationBar = () => {
             {navigation.main.map((i, index) => {
               return (
                 <Link
+                  onClick={toggleMenu}
                   key={index}
                   href={i.link}
                   className="text-[18px] leading-[22px] text-black"
@@ -100,6 +101,7 @@ const NavigationBar = () => {
               )
             })}
             <Link
+              onClick={toggleMenu}
               href="/booking"
               className="rounded-[8px] bg-[#F8470F] px-5 py-2.5 text-[18px] font-semibold leading-[22px] text-white"
             >
