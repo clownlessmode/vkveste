@@ -9,7 +9,7 @@ import { Textarea } from "../ui/textarea"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { useTransition, useEffect, useState } from "react"
+import { useTransition, useEffect, useState, ReactNode } from "react"
 import { submitForm } from "@/actions/order-certificate"
 import { Form } from "../ui/form"
 import fetchFromStrapi from "@/lib/strapi"
@@ -23,7 +23,7 @@ const formSchema = z.object({
   comment: z.string().optional(),
 })
 
-export default function CertificatesForm() {
+export default function CertificatesForm({children}: {children?: ReactNode}) {
   const [certificates, setCertificates] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -76,13 +76,15 @@ export default function CertificatesForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          variant={"gradient"}
-          size={"lg"}
-          className="max-w-[188px] sm:w-[384px] sm:max-w-none"
-        >
-          Приобрести сертификат
-        </Button>
+        {children ? children : (
+          <Button
+            variant={"gradient"}
+            size={"lg"}
+            className="max-w-[188px] sm:w-[384px] sm:max-w-none"
+          >
+            Приобрести сертификат
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <span className="pb-5 font-inter text-[17px] font-semibold leading-[21px] text-black sm:pb-[34px] md:pb-10 md:text-[36px] md:leading-[44px]">
