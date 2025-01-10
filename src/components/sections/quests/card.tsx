@@ -69,7 +69,7 @@ const QuestCard = ({
         "relative flex h-[161px] w-full max-w-[311px] flex-col items-center justify-center gap-y-2 overflow-hidden rounded-[14px] border-[0.5px] border-white/50 transition-all duration-300 hover:scale-105 sm:h-[103px] sm:max-w-none sm:gap-y-1 md:h-40 md:gap-3 lg:h-[220px] xl:w-[420px] xl:gap-y-4"
       )}
       style={{
-        backgroundImage: background,
+        backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -78,9 +78,9 @@ const QuestCard = ({
       <span className="max-w-[326px] font-bold uppercase leading-[21px] sm:text-xs sm:leading-[14px] md:text-lg lg:text-[17px] xl:text-2xl xl:leading-[30px]">
         {label}
       </span>
-      <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">
+      {/* <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">
         {description}
-      </p>
+      </p> */}
       <div className="absolute bottom-2.5 right-[14px] inline-flex items-center gap-x-[5px] xl:gap-x-[7px]">
         <span className="text-xs leading-[14px] lg:text-[16px] xl:leading-[19px]">
           {players}

@@ -17,6 +17,7 @@ interface QuestCardProps {
   players: string
   background: string
   link: string
+  order: number
 }
 ;[]
 
@@ -30,15 +31,18 @@ async function QuestSection() {
   })
 
   const quests = response.data
-  const mappedQuests: QuestCardProps[] = quests.map((quest) => ({
-    label: quest.name,
-    description: quest.quote,
-    type: quest.statistics.type,
-    difficulty: quest.statistics.difficulty,
-    players: quest.statistics.players,
-    background: `url('http://89.104.69.151:1338/uploads/2_6d68ff2a53.png')`,
-    link: `/quest/${quest.slug}`,
-  }))
+  const mappedQuests: QuestCardProps[] = quests
+    .map((quest) => ({
+      label: quest.name,
+      description: quest.quote,
+      type: quest.statistics.type,
+      difficulty: quest.statistics.difficulty,
+      players: quest.statistics.players,
+      background: `http://localhost:1338${quest.cover.url}`,
+      link: `/quest/${quest.slug}`,
+      order: quest.order,
+    }))
+    .sort((a, b) => a.order - b.order)
 
   return (
     <>

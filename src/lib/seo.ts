@@ -45,7 +45,7 @@ export const getSeoData = cache(
       const normalizedPath = path.startsWith("/") ? path.slice(1) : path
 
       const response = await fetch(
-        `http://89.104.69.151:1338/api/seos?filters[url]=${normalizedPath}&populate=*`,
+        `http://localhost:1338/api/seos?filters[url]=${normalizedPath}&populate=*`,
         { next: { revalidate: 3600 } }
       )
 

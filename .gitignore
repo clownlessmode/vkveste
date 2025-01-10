@@ -42,3 +42,5 @@ next-env.d.ts
 .wrangler
 server.zip
 vkveste.zip
+/server/node_modules
+/server/.env

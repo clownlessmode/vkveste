@@ -97,7 +97,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ...defaultMetadata.openGraph,
       ...(seoData.metaImage?.data && {
         images: [{
-          url: `http://89.104.69.151:1338${seoData.metaImage.data.attributes.url}`,
+          url: `http://localhost:1338/${seoData.metaImage.data.attributes.url}`,
           width: seoData.metaImage.data.attributes.width,
           height: seoData.metaImage.data.attributes.height,
           alt: seoData.metaImage.data.attributes.alternativeText,
