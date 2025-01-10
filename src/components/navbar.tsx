@@ -68,7 +68,7 @@ const NavigationBar = () => {
           className={`fixed right-0 top-0 block size-full max-w-[75%] bg-brand-main transition-transform duration-300 sm:max-w-[50%] md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"}`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="mx-auto flex w-full flex-col items-end gap-y-[23px] whitespace-nowrap pr-[5px] pt-5 sm:pr-8 md:hidden lg:justify-end lg:gap-x-[30px]">
+          <div className="mx-auto flex w-full flex-col items-end gap-y-[23px] whitespace-nowrap pr-2.5 pt-5 sm:pr-8 md:hidden lg:justify-end lg:gap-x-[30px]">
             <button onClick={toggleMenu}>
               <svg
                 className="mb-[26px] text-black"
