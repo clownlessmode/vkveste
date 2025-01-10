@@ -66,7 +66,7 @@ export function InlineCalendar({ onSelectDate }: InlineCalendarProps) {
               {format(date, "d")}
             </span>
             <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
-              {format(date, "E", { locale: ru })}
+              {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
             </span>
           </div>
         </button>
