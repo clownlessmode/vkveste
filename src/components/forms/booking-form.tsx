@@ -261,47 +261,9 @@ const BookingForm = React.memo(function BookingForm({
             {questName}
           </span>
           <div className="grid w-full grid-flow-row grid-cols-2 justify-between gap-y-2.5 pb-2.5 sm:pb-[26px] md:pb-10">
-            <span className="inline-flex items-center gap-x-0.5 font-inter text-black md:gap-x-[5px]">
-              <svg
-                className="size-[13px] sm:size-[18px] md:size-[27px]"
-                width="27"
-                height="27"
-                viewBox="0 0 27 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M13.5 23.625C19.0919 23.625 23.625 19.0919 23.625 13.5C23.625 7.90812 19.0919 3.375 13.5 3.375C7.90812 3.375 3.375 7.90812 3.375 13.5C3.375 19.0919 7.90812 23.625 13.5 23.625Z"
-                  stroke="black"
-                  strokeWidth="2.25"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M12.375 9V14.625H18"
-                  stroke="black"
-                  strokeWidth="2.25"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-[11px] leading-[13px] sm:text-[16px] sm:leading-[19px] md:text-[24px] md:leading-[29px]">
-                {format(date, "dd.MM.yy")}
-              </span>
-            </span>
-            <span className="text-end text-[17px] font-semibold leading-[21px] text-black md:text-[24px] md:leading-[29px]">
-              {appliedDiscount ? (
-                <>
-                  <span className="mr-2 text-gray-400 line-through">
-                    {price} ₽
-                  </span>
-                  {discountedPrice} ₽
-                </>
-              ) : (
-                `${price} ₽`
-              )}
-            </span>
-            <span className="inline-flex items-center gap-x-0.5 font-inter text-black md:gap-x-[5px]">
+            <div className="flex flex-col gap-y-0.5">
+              <h4 className="font-medium text-[16px] text-black">Дата</h4>
+              <span className="inline-flex items-center gap-x-0.5 font-inter text-black md:gap-x-[5px]">
               <svg
                 className="size-[13px] sm:size-[18px] md:size-[27px]"
                 width="27"
@@ -318,10 +280,54 @@ const BookingForm = React.memo(function BookingForm({
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-[11px] leading-[13px] sm:text-[16px] sm:leading-[19px] md:text-[24px] md:leading-[29px]">
-                {time}
+                <span className="text-[11px] leading-[13px] sm:text-[16px] sm:leading-[19px] md:text-[24px] md:leading-[29px]">
+                  {format(date, "dd.MM.yy")}
+                </span>
               </span>
+            </div>
+            <span className="text-end text-[17px] font-semibold leading-[21px] text-black md:text-[24px] md:leading-[29px]">
+              {appliedDiscount ? (
+                <>
+                  <span className="mr-2 text-gray-400 line-through">
+                    {price} ₽
+                  </span>
+                  {discountedPrice} ₽
+                </>
+              ) : (
+                `${price} ₽`
+              )}
             </span>
+            <div className="flex flex-col gap-y-0.5">
+              <h4 className="font-medium text-[16px] text-black">Время</h4>
+              <span className="inline-flex items-center gap-x-0.5 font-inter text-black md:gap-x-[5px]">
+                <svg
+                  className="size-[13px] sm:size-[18px] md:size-[27px]"
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.5 23.625C19.0919 23.625 23.625 19.0919 23.625 13.5C23.625 7.90812 19.0919 3.375 13.5 3.375C7.90812 3.375 3.375 7.90812 3.375 13.5C3.375 19.0919 7.90812 23.625 13.5 23.625Z"
+                    stroke="black"
+                    strokeWidth="2.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12.375 9V14.625H18"
+                    stroke="black"
+                    strokeWidth="2.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-[11px] leading-[13px] sm:text-[16px] sm:leading-[19px] md:text-[24px] md:leading-[29px]">
+                  {time}
+                </span>
+              </span>
+            </div>
           </div>
           <Form {...form}>
             <form
