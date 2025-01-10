@@ -14,6 +14,7 @@ export interface RequirementsRequirements extends Struct.ComponentSchema {
 export interface SchedulingTimegroup extends Struct.ComponentSchema {
   collectionName: "components_scheduling_timegroup"
   info: {
+    description: ""
     displayName: "Timegroup"
   }
   attributes: {
@@ -36,9 +37,20 @@ export interface SchedulingTimeline extends Struct.ComponentSchema {
     displayName: "Timeline"
   }
   attributes: {
-    days: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<"monday">
+    days: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        "plugin::multi-select.multi-select",
+        [
+          "\u041F\u043E\u043D\u0435\u0434\u0435\u043B\u044C\u043D\u0438\u043A",
+          "\u0412\u0442\u043E\u0440\u043D\u0438\u043A",
+          "\u0421\u0440\u0435\u0434\u0430",
+          "\u0427\u0435\u0442\u0432\u0435\u0440\u0433",
+          "\u041F\u044F\u0442\u043D\u0438\u0446\u0430",
+          "\u0421\u0443\u0431\u0431\u043E\u0442\u0430",
+          "\u0412\u043E\u0441\u043A\u0440\u0435\u0441\u0435\u043D\u044C\u0435",
+        ]
+      > &
+      Schema.Attribute.DefaultTo<"[]">
     timegroups: Schema.Attribute.Component<"scheduling.timegroup", true>
   }
 }

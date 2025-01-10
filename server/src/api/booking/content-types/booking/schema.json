@@ -14,7 +14,12 @@
   "attributes": {
     "bookingStatus": {
       "type": "enumeration",
-      "enum": ["На рассмотрении", "Подтвержден", "Оплачен", "Отменен"],
+      "enum": [
+        "На рассмотрении",
+        "Подтвержден",
+        "Оплачен",
+        "Отменен"
+      ],
       "required": true
     },
     "paymentMethod": {
@@ -81,6 +86,9 @@
     },
     "statusHistory": {
       "type": "json"
+    },
+    "test": {
+      "type": "string"
     }
   }
 }

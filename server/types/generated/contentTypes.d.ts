@@ -424,6 +424,7 @@ export interface ApiBookingBooking extends Struct.CollectionTypeSchema {
     quest: Schema.Attribute.String & Schema.Attribute.Required
     secondCall: Schema.Attribute.DateTime
     statusHistory: Schema.Attribute.JSON
+    test: Schema.Attribute.String
     totalAmount: Schema.Attribute.Decimal & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &

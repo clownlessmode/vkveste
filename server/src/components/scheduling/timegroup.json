@@ -1,7 +1,8 @@
 {
   "collectionName": "components_scheduling_timegroup",
   "info": {
-    "displayName": "Timegroup"
+    "displayName": "Timegroup",
+    "description": ""
   },
   "attributes": {
     "times": {

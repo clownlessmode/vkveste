@@ -11,9 +11,18 @@
       "repeatable": true
     },
     "days": {
-      "type": "string",
-      "required": true,
-      "default": "monday"
+      "type": "customField",
+      "default": "[]",
+      "options": [
+        "Понедельник",
+        "Вторник",
+        "Среда",
+        "Четверг",
+        "Пятница",
+        "Суббота",
+        "Воскресенье"
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }
