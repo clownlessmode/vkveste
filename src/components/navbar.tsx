@@ -61,7 +61,7 @@ const NavigationBar = () => {
       </MaxWidthWrapper>
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-10 max-w-[50%] ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
+        className={`fixed inset-0 z-10 max-w-[30%] ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
         onClick={toggleMenu}
       >
         <div
