@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Form } from "../ui/form"
 import { PhoneInput } from "../ui/phone-input"
+import { cn } from "@/utils"
 
 const formSchema = z.object({
   name: z.string().min(10, "ФИО должно содержать не менее 10 символов"),
@@ -28,7 +29,7 @@ const formSchema = z.object({
   comment: z.string().optional(),
 })
 
-export default function RequestForm() {
+export default function RequestForm({className}: {className?: string}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
@@ -62,7 +63,7 @@ export default function RequestForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"gradient"} size={"lg"} className="w-full">
+        <Button variant={"gradient"} size={"lg"} className={cn("w-full", className)}>
           Оставить заявку
         </Button>
       </DialogTrigger>

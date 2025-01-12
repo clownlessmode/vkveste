@@ -14,7 +14,7 @@ const buttonVariants = cva(
         gradient:
           "rounded-[14px] text-2xl leading-[29px] text-white font-semibold bg-gradient-to-r from-brand-main to-[#F8470F] hover:bg-[#F6A819] hover:opacity-75",
         glowing:
-          "border-2 border-transparent hover:text-black hover:bg-[#F6A819] border-image-gradient-border shadow-custom-shadow font-semibold text-[#F7AF16] text-xs leading-[15px] rounded-[8px] lg:rounded-[14px] lg:leading-[29px] lg:text-2xl border-2 border-brand-secondary",
+          "rounded-[14px] border-2 border-transparent hover:text-black hover:bg-[#F6A819] border-image-gradient-border shadow-custom-shadow font-semibold text-[#F7AF16] text-xs leading-[15px]  lg:leading-[29px] lg:text-2xl border-2 border-brand-secondary",
         destructive:
           "bg-red-500 text-zinc-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
         outline:

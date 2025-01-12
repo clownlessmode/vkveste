@@ -25,8 +25,8 @@ async function getContactData() {
     })
 
     return {
-      instagram: response.data.social.instagram,
-      vkontakte: response.data.social.vkontakte,
+      instagram: "https://instagram.com/Vzaperti.tvr",
+      vkontakte: "https://vk.com/vzaperticom",
       telegram: response.data.social.telegram,
       phone: `tel:${response.data.phone}`,
       phoneFormatted: formatPhoneNumber(response.data.phone),

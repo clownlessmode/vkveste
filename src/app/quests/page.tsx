@@ -8,6 +8,7 @@ import element_2 from "../../../public/quests_element_2.png"
 import Image from "next/image"
 import ReviewsSection from "@/components/sections/reviews/section"
 import CtaSection from "@/components/sections/cta/section"
+import RequestForm from "@/components/forms/request-form"
 
 export default function QuestsPage() {
   return (
@@ -22,7 +23,7 @@ export default function QuestsPage() {
               Откройся новым приключениям
             </h3>
             <p className="text-center text-[12px] leading-[14px] sm:text-start sm:text-[11px] sm:leading-[13px] md:text-center md:text-[18px] md:leading-[22px] lg:text-start lg:text-[24px] lg:leading-[29px]">
-              Детективные квесты, жуткие хоррор квесты, экшен
+              Приключенческие квесты, жуткие хоррор квесты, экшен
               <br /> и перформансы
             </p>
             <Image
@@ -31,13 +32,8 @@ export default function QuestsPage() {
               placeholder="blur"
               className="pointer-events-none -right-0 block max-w-none sm:hidden"
             />
-            <Button
-              variant={"gradient"}
-              size="lg"
-              className="mt-5 w-full max-w-[200px] sm:max-w-[575px]"
-            >
-              Оставить заявку
-            </Button>
+           
+            <RequestForm className="mt-5 w-full max-w-[200px] sm:max-w-[575px]"/>
           </div>
         </MaxWidthWrapper>
         <Image

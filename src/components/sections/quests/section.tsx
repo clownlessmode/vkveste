@@ -110,7 +110,7 @@ async function QuestSection() {
           src={quest_background}
           alt="background"
           placeholder="blur"
-          className="absolute inset-x-0 bottom-[44px] top-1/2 z-[-5] mx-auto h-full -translate-y-1/2 sm:h-auto lg:top-0 lg:translate-y-0 xl:top-[40px]"
+          className="absolute inset-x-0 bottom-[44px] top-1/2 z-[-5] mx-auto h-full w-full object-cover object-center -translate-y-1/2 sm:h-auto lg:top-0 lg:translate-y-0 xl:top-[40px]"
         />
       </section>
     </>

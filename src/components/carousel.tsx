@@ -28,14 +28,13 @@ export async function getCarouselItems() {
 
   return response.data.map((slide: any) => ({
     id: slide.id,
-    url: `http://89.104.69.151:1338/uploads/2_6d68ff2a53.png`,
+    url: slide.image,
   }))
 }
 
 export function HeroCarousel({ className, mobile, items }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-
   useEffect(() => {
     const timer = setInterval(() => {
       setDirection(1)
@@ -80,7 +79,7 @@ export function HeroCarousel({ className, mobile, items }: CarouselProps) {
           <div className="relative flex h-[196px] w-full flex-col overflow-hidden rounded-[10px] sm:h-[404px] sm:rounded-[21px]">
             <div className="absolute left-0 top-0 z-0 h-full w-full">
               <Image
-                src={"http://89.104.69.151:3000/quests/1.png"}
+                src={`http://89.104.69.151:1338${items[currentIndex].url.url}`}
                 alt={items[currentIndex].id.toString()}
                 fill
                 quality={100}
@@ -116,7 +115,7 @@ export function HeroCarousel({ className, mobile, items }: CarouselProps) {
           <div className="relative flex w-full flex-col overflow-hidden border-2 border-none sm:h-[205px] sm:rounded-[8px] sm:border-[0.65px] sm:border-brand-main sm:shadow-custom-shadow md:rounded-none md:border-none md:shadow-none lg:h-[539px] lg:max-h-[470px] lg:rounded-[30px] lg:shadow-custom-shadow xl:max-h-[539px]">
             <div className="absolute left-0 top-0 z-0 hidden h-full w-full sm:block md:hidden lg:block">
               <Image
-                src={"http://89.104.69.151:3000/quests/1.png"}
+                src={`http://89.104.69.151:1338${items[currentIndex].url.url}`}
                 alt={items[currentIndex].id.toString()}
                 fill
                 quality={100}

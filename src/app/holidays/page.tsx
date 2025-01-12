@@ -5,6 +5,7 @@ import { MaxWidthWrapper } from "@/components/width-wrapper"
 
 import baloons from "../../../public/holidays_baloons.png"
 import Image from "next/image"
+import RequestForm from "@/components/forms/request-form"
 
 export default function HolidaysPage() {
   return (
@@ -44,9 +45,7 @@ export default function HolidaysPage() {
                 <Button size="lg" variant="outline" className="w-full">
                   +7 (4822) 630-444
                 </Button>
-                <Button size="lg" variant="gradient" className="w-full">
-                  Оставить заявку
-                </Button>
+                <RequestForm />
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import pirates from "../../../../public/cta_pirates.png"
 import Image from "next/image"
+import Link from "next/link"
 
 const CtaSection = () => {
   return (
@@ -23,7 +24,7 @@ const CtaSection = () => {
           className="max-w-[106px] md:mt-[15px] md:max-w-[171px] lg:mt-5 lg:max-w-[228px]"
           size="lg"
         >
-          Подробнее
+          <Link href="/holidays">Подробнее</Link>
         </Button>
       </div>
     </div>

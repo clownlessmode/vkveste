@@ -69,7 +69,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
     <div className="flex flex-col gap-y-[60px] pb-16 pt-[60px] sm:gap-20 sm:pt-20 lg:gap-[120px] lg:gap-y-[160px] lg:pb-[160px] lg:pt-[120px] xl:pt-[140px]">
       <section className="">
         <MaxWidthWrapper className="relative">
-          <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px]">
+          <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px] p-2">
             <div className="relative z-30 flex flex-col gap-y-1 lg:gap-y-5">
               <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[54px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
                 {data.name}
