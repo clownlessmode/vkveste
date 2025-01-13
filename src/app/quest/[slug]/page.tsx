@@ -65,18 +65,17 @@ export default async function QuestPage({ params }: QuestPageProps) {
   const nextQuest =
     currentIndex < quests.length - 1 ? quests[currentIndex + 1] : null
 
+
   return (
     <div className="flex flex-col gap-y-[60px] pb-16 pt-[60px] sm:gap-20 sm:pt-20 lg:gap-[120px] lg:gap-y-[160px] lg:pb-[160px] lg:pt-[120px] xl:pt-[140px]">
-      <section className="">
+      <section className="relative">
+         
         <MaxWidthWrapper className="relative">
           <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px] p-2">
             <div className="relative z-30 flex flex-col gap-y-1 lg:gap-y-5">
               <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[54px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
                 {data.name}
               </h1>
-              {/* <span className="font-inter font-semibold leading-5 md:text-[27px] md:leading-9 xl:text-[36px] xl:leading-[44px]">
-                {data.quote}
-              </span> */}
             </div>
             <div className="relative z-30 mt-40 inline-flex w-full max-w-[632px] justify-between sm:mt-5 sm:flex-col md:mt-80 md:flex-row lg:mt-10 lg:flex-col xl:mt-0 xl:flex-row">
               <div className="flex flex-col sm:gap-0.5 md:gap-4 lg:gap-y-5">
@@ -113,6 +112,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
                   </span>
                 </span>
               </div>
+              
               <div className="flex flex-col sm:gap-0.5 md:gap-1.5 lg:mt-8 lg:gap-y-1">
                 <span className="bg-gradient-to-b from-brand-main via-[#F8BC0F] to-[#F6A819] bg-clip-text pl-1 font-inter text-sm font-semibold text-transparent sm:text-[17px] md:text-2xl md:leading-8 lg:text-[36px] xl:leading-[44px]">
                   12
@@ -125,6 +125,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
                 </span>
               </div>
             </div>
+            
             <div className="relative z-30 mt-2 inline-flex items-center gap-2.5 md:gap-5 xl:gap-x-5">
                 <Button
                   asChild
@@ -147,10 +148,11 @@ export default async function QuestPage({ params }: QuestPageProps) {
               </CertificatesForm>
               <ShareButton />
             </div>
+            
             <div className="absolute inset-0 size-full h-60 sm:h-full md:mt-32 md:h-[406px] lg:top-0 lg:mt-0 lg:h-full">
               <div className="bg-quest-1 relative h-full w-full">
                 <div className="bg-quest-2 sm:bg-quest-1 md:bg-quest-2 lg:bg-quest-1 absolute inset-0 z-20 size-full"></div>
-                <button>
+                {/* <button>
                   <svg
                     width="116"
                     height="116"
@@ -180,17 +182,38 @@ export default async function QuestPage({ params }: QuestPageProps) {
                       </linearGradient>
                     </defs>
                   </svg>
-                </button>
+                </button> */}
                 <Image
-                  src="/quests/test.png"
+                  src={`http://89.104.69.151:1338${data.cover.url}`}
                   alt="Image"
                   className="absolute inset-0 z-10 size-full object-cover"
-                  width={1200}
-                  height={600}
+                  width={2400}
+                  height={1200}
+                  quality={100}
                 />
+              
               </div>
             </div>
           </div>
+          <div className="absolute inset-0 z-[999] size-full flex justify-between items-center">
+  {prevQuest ? (
+    <Link href={`/quest/${prevQuest.slug}`} className="-ml-[25px] hover:scale-105 transition-all duration-300 bg-[#0D0D0D] rotate-180 w-[90px] h-[80px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
+      <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z" fill="#F8BC0F"/>
+      </svg>
+    </Link>
+  ): (
+    <div className="invisible">a</div>
+  )}
+  
+  {nextQuest && (
+    <Link href={`/quest/${nextQuest.slug}`} className="-mr-[25px] hover:scale-105 transition-all duration-300 bg-[#0D0D0D] w-[90px] h-[80px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
+      <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z" fill="#F8BC0F"/>
+      </svg>
+    </Link>
+  )}
+</div>
         </MaxWidthWrapper>
       </section>
       <section>

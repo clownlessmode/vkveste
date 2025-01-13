@@ -11,7 +11,6 @@ import Widget from "./widget"
 
 const Footer = async () => {
   const contactData = await getContactData()
-  console.log(contactData)
   return (
     <div className="w-full bg-gray-200">
       <MaxWidthWrapper>
