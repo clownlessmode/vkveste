@@ -69,12 +69,12 @@ const NavigationBar = () => {
         onClick={toggleMenu}
       >
         <div
-          className={`fixed right-0 top-0 block h-full px-[30px] bg-brand-main transition-all duration-300 md:hidden ${
+          className={`fixed right-0 top-0 block h-full pl-[30px] pr-2.5 bg-brand-main transition-all duration-300 md:hidden ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="mx-auto flex w-full flex-col items-end gap-y-[23px] whitespace-nowrap pr-2.5 pt-5 sm:pr-8 md:hidden lg:justify-end lg:gap-x-[30px]">
+          <div className="mx-auto flex w-full flex-col items-end gap-y-[23px] whitespace-nowrap pr-2.5 pt-5 md:hidden lg:justify-end lg:gap-x-[30px]">
             <button onClick={toggleMenu}>
               <MenuIcon className="!h-6 !w-[30px] !text-[#151515]" />
             </button>
