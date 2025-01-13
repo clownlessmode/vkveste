@@ -61,32 +61,22 @@ const NavigationBar = () => {
       </MaxWidthWrapper>
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-10 max-w-[30%] ${isOpen ? "visible opacity-100" : "invisible opacity-0"}`}
+        className={`fixed inset-0 z-10 transition-all duration-300 ${
+          isOpen 
+            ? "visible opacity-100" 
+            : "invisible opacity-0 delay-300"
+        }`}
         onClick={toggleMenu}
       >
         <div
-          className={`fixed right-0 top-0 block size-full max-w-[75%] bg-brand-main transition-transform duration-300 sm:max-w-[50%] md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`fixed right-0 top-0 block h-full px-[30px] bg-brand-main transition-all duration-300 md:hidden ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="mx-auto flex w-full flex-col items-end gap-y-[23px] whitespace-nowrap pr-2.5 pt-5 sm:pr-8 md:hidden lg:justify-end lg:gap-x-[30px]">
             <button onClick={toggleMenu}>
-              <svg
-                className="mb-[26px] text-black"
-                width="36"
-                height="24"
-                viewBox="0 0 36 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20 0.0078125H36L28 12.0078L36 24.0078H20L12 12.0078L20 0.0078125Z"
-                  fill="#151515"
-                />
-                <path
-                  d="M14 0.0078125V24.0078L0.5 12.5078L14 0.0078125Z"
-                  fill="#151515"
-                />
-              </svg>
+              <MenuIcon className="!h-6 !w-[30px] !text-[#151515]" />
             </button>
             {navigation.main.map((i, index) => {
               return (

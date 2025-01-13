@@ -13,10 +13,12 @@ import { useTransition, useEffect, useState, ReactNode } from "react"
 import { submitForm } from "@/actions/order-certificate"
 import { Form } from "../ui/form"
 import fetchFromStrapi from "@/lib/strapi"
+import InputMask from 'react-input-mask'
 
 const formSchema = z.object({
   name: z.string().min(10, "ФИО должно содержать не менее 10 символов"),
-  email: z.string().email("Некорректный адрес электронной почты"),
+  email: z.string().email("Некорректный адрес электронной почты"), 
+  phone: z.string().min(12, "Введите корректный номер телефона").transform(val => val.replace(/[^\d+]/g, '')),
   address: z.string().min(1, "Адрес обязателен для заполнения"),
   shipment: z.boolean().optional(),
   value: z.number().min(0, "Некорректный формат цены"),
@@ -122,7 +124,28 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
                 </span>
               )}
             </div>
-
+            <div className="flex w-full flex-col gap-y-1.5">
+              <InputMask
+                mask="+7 (999) 999-99-99"
+                maskChar={null}
+                {...form.register("phone")}
+                placeholder="+7 (___) ___-__-__"
+                required
+              >
+                {(inputProps: any) => (
+                  <Input 
+                    {...inputProps}
+                    type="tel"
+                    aria-invalid={!!form.formState.errors.phone}
+                  />
+                )}
+              </InputMask>
+              {form.formState.errors.phone && (
+                <span className="text-[11px] text-red-500 md:text-[16px]">
+                  {form.formState.errors.phone.message}
+                </span>
+              )}
+            </div>
             <div className="flex w-full flex-col gap-y-1.5">
               <Input
                 {...form.register("address")}
@@ -167,7 +190,7 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
             <Textarea
               {...form.register("comment")}
               placeholder="Комментарий"
-              className="resize-none"
+              className="resize-none text-black"
             />
 
             <Button

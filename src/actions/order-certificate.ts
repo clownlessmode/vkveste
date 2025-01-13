@@ -7,6 +7,7 @@ interface SubmitFormProps {
   shipment?: boolean
   value: number
   comment?: string
+  phone: string
 }
 
 export async function submitForm({
@@ -16,6 +17,7 @@ export async function submitForm({
   shipment,
   value,
   comment,
+  phone,
 }: SubmitFormProps) {
   try {
     if (!process.env.GOOGLE_SHEET_CERTIFICATES) {
@@ -30,6 +32,7 @@ export async function submitForm({
         name: name,
         email: email,
         address: address,
+        phone: phone,
         shipment: shipment,
         value: value,
         comment: comment,

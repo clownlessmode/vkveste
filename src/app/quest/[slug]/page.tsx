@@ -11,6 +11,12 @@ import QuestSection from "@/components/sections/quests/section"
 import CertificatesForm from "@/components/forms/certificates-form"
 import Link from "next/link"
 import { ShareButton } from "@/components/ui/share-button"
+import SwordIcon from "@/icons/sword-icon"
+import SkullIcon from "@/icons/skull-icon"
+import MoneyIcon from "@/icons/money-icon"
+import PotionIcon from "@/icons/potion-icon"
+import HatIcon from "@/icons/hat-icon"
+import DrinkIcon from "@/icons/drink-icon"
 
 interface Quest {
   name: string
@@ -45,7 +51,29 @@ interface QuestPageProps {
     slug: string
   }
 }
-
+const questIcons = {
+  key: (
+    <KeyIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+  sword: (
+    <SwordIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+  skull: (
+    <SkullIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+  money: (
+    <MoneyIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+  potion: (
+    <PotionIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+  hat: (
+    <HatIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+  drink: (
+    <DrinkIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
+  ),
+}
 export default async function QuestPage({ params }: QuestPageProps) {
   const response = await fetchFromStrapi("quests", {
     next: {
@@ -65,7 +93,14 @@ export default async function QuestPage({ params }: QuestPageProps) {
   const nextQuest =
     currentIndex < quests.length - 1 ? quests[currentIndex + 1] : null
 
-
+  const difficultyIcons = Array.from({ length: 3 }, (_, index) => (
+    <span
+      key={index}
+      className={index < data.statistics.difficulty ? "text-brand-main" : "text-[#6A6A6A]"}
+    >
+      {questIcons[data.statistics.type]}
+    </span>
+  ))
   return (
     <div className="flex flex-col gap-y-[60px] pb-16 pt-[60px] sm:gap-20 sm:pt-20 lg:gap-[120px] lg:gap-y-[160px] lg:pb-[160px] lg:pt-[120px] xl:pt-[140px]">
       <section className="relative">
@@ -106,9 +141,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
                     Сложность
                   </span>
                   <span className="inline-flex items-center">
-                    <KeyIcon className="size-3 text-brand-main md:size-5 xl:size-[26px]" />
-                    <KeyIcon className="size-3 text-brand-main md:size-5 xl:size-[26px]" />
-                    <KeyIcon className="size-3 text-brand-main md:size-5 xl:size-[26px]" />
+                    {difficultyIcons}
                   </span>
                 </span>
               </div>
@@ -152,7 +185,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
             <div className="absolute inset-0 size-full h-60 sm:h-full md:mt-32 md:h-[406px] lg:top-0 lg:mt-0 lg:h-full">
               <div className="bg-quest-1 relative h-full w-full">
                 <div className="bg-quest-2 sm:bg-quest-1 md:bg-quest-2 lg:bg-quest-1 absolute inset-0 z-20 size-full"></div>
-                {/* <button>
+                {data.name === 'Техасская резня бензопилой' && ( <button>
                   <svg
                     width="116"
                     height="116"
@@ -182,7 +215,8 @@ export default async function QuestPage({ params }: QuestPageProps) {
                       </linearGradient>
                     </defs>
                   </svg>
-                </button> */}
+                </button>)}
+               
                 <Image
                   src={`http://89.104.69.151:1338${data.cover.url}`}
                   alt="Image"

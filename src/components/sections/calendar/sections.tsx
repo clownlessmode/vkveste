@@ -68,35 +68,59 @@ export function InlineCalendar({ onSelectDate }: InlineCalendarProps) {
   }
 
   return (
-    // <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] xl:overflow-auto xl:px-0">
-    <div className="flex flex-col gap-y-1">
-     {weeks.map((week, weekIndex) => (
-      <div key={weekIndex} className="inline-flex items-center gap-x-[4px] overflow-x-scroll xl:overflow-auto">
-        {week.map((date) => (
-          <button
-            onClick={() => handleDateClick(date)}
-            className={cn(
-              "inline-flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
-              isSameDay(date, selectedDate)
-                ? "!border-none !bg-[#F8470F] text-white"
-                : "",
-              isWeekend(date) ? "border-[#909090] bg-gray-200" : ""
-            )}
-            key={date.toISOString()}
-          >
-            <div className="mx-auto flex flex-col items-center justify-center">
-              <span className="text-[12px] font-semibold leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
-                {format(date, "d")}
-              </span>
-              <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
-                {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
-              </span>
-            </div>
-          </button>
-        ))}
-      </div>
-    ))}
-  </div>
+  //   // <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] xl:overflow-auto xl:px-0">
+  //   <div className="flex flex-col gap-y-1">
+  //    {weeks.map((week, weekIndex) => (
+  //     <div key={weekIndex} className="inline-flex items-center gap-x-[4px] overflow-x-scroll xl:overflow-auto">
+  //       {week.map((date) => (
+  //         <button
+  //           onClick={() => handleDateClick(date)}
+  //           className={cn(
+  //             "inline-flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
+  //             isSameDay(date, selectedDate)
+  //               ? "!border-none !bg-[#F8470F] text-white"
+  //               : "",
+  //             isWeekend(date) ? "border-[#909090] bg-gray-200" : ""
+  //           )}
+  //           key={date.toISOString()}
+  //         >
+  //           <div className="mx-auto flex flex-col items-center justify-center">
+  //             <span className="text-[12px] font-semibold leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
+  //               {format(date, "d")}
+  //             </span>
+  //             <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
+  //               {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
+  //             </span>
+  //           </div>
+  //         </button>
+  //       ))}
+  //     </div>
+  //   ))}
+  // </div>
+  <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] xl:overflow-auto xl:px-0">
+      {dates.map((date) => (
+        <button
+          onClick={() => handleDateClick(date)}
+          className={cn(
+            "flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
+            isSameDay(date, selectedDate)
+              ? "!border-none !bg-[#F8470F] text-white"
+              : "",
+            isWeekend(date) ? "border-[#909090] bg-gray-200" : ""
+          )}
+          key={date.toISOString()}
+        >
+          <div className="mx-auto flex flex-col items-center justify-center">
+            <span className="text-[12px] font-semibold leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
+              {format(date, "d")}
+            </span>
+            <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
+              {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
+            </span>
+          </div>
+        </button>
+      ))}
+    </div>
   )
 }
 

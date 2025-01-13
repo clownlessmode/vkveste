@@ -78,14 +78,17 @@ const QuestCard = ({
       <span className="max-w-[326px] font-bold uppercase leading-[21px] sm:text-xs sm:leading-[14px] md:text-lg lg:text-[17px] xl:text-2xl xl:leading-[30px]">
         {label}
       </span>
-      {/* <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">
+      <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px] -mt-[8px]">
         {description}
-      </p> */}
-      <div className="absolute bottom-2.5 right-[14px] inline-flex items-center gap-x-[5px] xl:gap-x-[7px]">
-        <span className="text-xs leading-[14px] lg:text-[16px] xl:leading-[19px]">
-          {players}
-        </span>
-        <PlayersIcon className="size-[17px] lg:size-[24px]" />
+      </p>
+      <div className="absolute bottom-2.5 w-full flex px-[14px] inline-flex items-center gap-x-[5px] xl:gap-x-[7px] justify-between">
+        <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">ул. Лидии Базановой, д. 20, оф. 30</p>
+        <div className="flex items-center gap-x-[5px]">
+          <span className="text-xs leading-[14px] lg:text-[16px] xl:leading-[19px]">
+            {players}
+          </span>
+          <PlayersIcon className="size-[17px] lg:size-[24px]" />
+      </div>
       </div>
     </Link>
   )
