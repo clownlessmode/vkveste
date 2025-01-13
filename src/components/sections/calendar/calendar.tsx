@@ -21,7 +21,7 @@ export function QuestCalendar({ transformedQuests, contact }: QuestCalendarProps
   return (
     <div className="flex flex-col py-[50px] xl:py-[140px]">
       <MaxWidthWrapper className="!max-w-[1480px]">
-        <div className="mb-5 flex flex-col gap-y-2.5 border-b border-white/30 pb-2.5 xl:mb-2.5 xl:pb-3">
+        <div className="mb-5 flex flex-col gap-y-2.5 border-b border-white/30 pb-5 xl:mb-2.5 xl:pb-3">
           <div className="inline-flex items-center justify-between pb-0 text-[#909090] xl:pb-10">
             <span className="text-[17px] font-medium leading-[25.15px] xl:text-[24px] xl:leading-[48px]">
               Расписание - {format(selectedDate, "d MMMM", { locale: ru })}

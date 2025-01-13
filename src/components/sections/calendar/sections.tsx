@@ -97,12 +97,12 @@ export function InlineCalendar({ onSelectDate }: InlineCalendarProps) {
   //     </div>
   //   ))}
   // </div>
-  <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] xl:overflow-auto xl:px-0">
+  <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] pb-[25px] xl:overflow-auto xl:px-0">
       {dates.map((date) => (
         <button
           onClick={() => handleDateClick(date)}
           className={cn(
-            "flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
+            "flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px]  border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
             isSameDay(date, selectedDate)
               ? "!border-none !bg-[#F8470F] text-white"
               : "",

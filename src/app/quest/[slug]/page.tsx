@@ -159,7 +159,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
               </div>
             </div>
             
-            <div className="relative z-30 mt-2 inline-flex items-center gap-2.5 md:gap-5 xl:gap-x-5">
+            <div className="relative z-[101] mt-2 inline-flex items-center gap-2.5 md:gap-5 xl:gap-x-5">
                 <Button
                   asChild
                   size="lg"
@@ -228,7 +228,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
               </div>
             </div>
           </div>
-          <div className="absolute inset-0 z-[999] size-full justify-between items-center hidden lg:flex">
+          <div className="absolute inset-0 z-[100] size-full justify-between items-center hidden lg:flex">
             {prevQuest ? (
               <Link href={`/quest/${prevQuest.slug}`} className="xl:-ml-[25px] -ml-[10px] hover:scale-105  transition-all duration-300 bg-[#0D0D0D] rotate-180 xl:w-[90px] xl:h-[80px] w-[60px] h-[50px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
                 <svg width="24" height="15" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="xl:w-[36px] xl:h-[22px]">
