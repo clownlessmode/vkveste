@@ -46,7 +46,7 @@ async function QuestSection() {
 
   return (
     <>
-      <section className="relative mx-auto inline-flex w-full items-center pb-[60px] sm:pb-[80px] md:pb-[120px] lg:pb-[140px]">
+      <section className="relative mx-auto inline-flex w-full items-center">
         <MaxWidthWrapper>
           <h2 className="pb-5 text-center text-[17px] font-bold leading-[21px] md:text-[27px] lg:pb-10 lg:text-[36px] lg:leading-[45px]">
             Наши квесты
@@ -61,9 +61,9 @@ async function QuestSection() {
                   className={cn(
                     "relative flex h-40 w-full flex-col items-center justify-center gap-y-4 rounded-[14px] border-[0.5px] border-white/50 bg-[#151515] sm:h-[103px] lg:h-[220px]"
                   )}
-                  style={{
-                    clipPath: "polygon(0 0, 100% 1%, 100% 89%, 0 70%)",
-                  }}
+                  // style={{
+                  //   clipPath: "polygon(0 0, 100% 1%, 100% 89%, 0 70%)",
+                  // }}
                 >
                   <div className="inline-flex items-center text-[#6A6A6A]">
                     <KeyIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
@@ -80,10 +80,10 @@ async function QuestSection() {
                   className={cn(
                     "relative flex h-40 w-full flex-col items-center justify-center gap-y-4 rounded-[14px] border-[0.5px] border-white/50 bg-[#151515] sm:h-[103px] lg:h-[220px]"
                   )}
-                  style={{
-                    clipPath:
-                      "polygon(0 0, 100% 0, 100% 30%, 100% 100%, 54% 100%, 0 90%, 0% 70%, 0% 30%)",
-                  }}
+                  // style={{
+                  //   clipPath:
+                  //     "polygon(0 0, 100% 0, 100% 30%, 100% 100%, 54% 100%, 0 90%, 0% 70%, 0% 30%)",
+                  // }}
                 >
                   <div className="inline-flex items-center text-[#6A6A6A]">
                     <KeyIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />

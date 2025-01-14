@@ -257,7 +257,7 @@ const BookingForm = React.memo(function BookingForm({
           {children}
         </DialogTrigger>
         <DialogContent>
-          <span className="pb-5 text-center font-inter text-[17px] font-semibold leading-[21px] text-black sm:pb-[34px] md:pb-10 md:text-[36px] md:leading-[44px]">
+          <span className="max-w-[220px] pb-5 text-center font-inter text-[17px] font-semibold leading-[21px] text-black sm:max-w-[340px] sm:pb-[34px] md:pb-10 md:text-[36px] md:leading-[44px]">
             {questName}
           </span>
           <div className="grid w-full grid-flow-row grid-cols-2 justify-between gap-y-2.5 pb-2.5 sm:pb-[26px] md:pb-10">

@@ -5,6 +5,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "../ui/input"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Textarea } from "../ui/textarea"
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select"
 
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -13,19 +20,27 @@ import { useTransition, useEffect, useState, ReactNode } from "react"
 import { submitForm } from "@/actions/order-certificate"
 import { Form } from "../ui/form"
 import fetchFromStrapi from "@/lib/strapi"
-import InputMask from 'react-input-mask'
+import InputMask from "react-input-mask"
 
 const formSchema = z.object({
   name: z.string().min(10, "ФИО должно содержать не менее 10 символов"),
-  email: z.string().email("Некорректный адрес электронной почты"), 
-  phone: z.string().min(12, "Введите корректный номер телефона").transform(val => val.replace(/[^\d+]/g, '')),
+  email: z.string().email("Некорректный адрес электронной почты"),
+  phone: z
+    .string()
+    .min(12, "Введите корректный номер телефона")
+    .transform((val) => val.replace(/[^\d+]/g, "")),
   address: z.string().min(1, "Адрес обязателен для заполнения"),
   shipment: z.boolean().optional(),
   value: z.number().min(0, "Некорректный формат цены"),
   comment: z.string().optional(),
+  deliveryType: z.enum(["pickup", "delivery"]),
 })
 
-export default function CertificatesForm({children}: {children?: ReactNode}) {
+export default function CertificatesForm({
+  children,
+}: {
+  children?: ReactNode
+}) {
   const [certificates, setCertificates] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -54,6 +69,7 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
     defaultValues: {
       value: 4500,
       shipment: false,
+      deliveryType: "pickup",
     },
   })
 
@@ -78,11 +94,13 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        {children ? children : (
+        {children ? (
+          children
+        ) : (
           <Button
             variant={"gradient"}
             size={"lg"}
-            className="max-w-[188px] sm:w-[384px] sm:max-w-none"
+            className="h-[40px] w-full max-w-[188px] text-[12px] md:h-[61px] md:max-w-[288px] md:text-[18px] md:leading-[22px] lg:h-[82px] lg:max-w-[384px] lg:text-[24px] lg:leading-[30px]"
           >
             Приобрести сертификат
           </Button>
@@ -133,7 +151,7 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
                 required
               >
                 {(inputProps: any) => (
-                  <Input 
+                  <Input
                     {...inputProps}
                     type="tel"
                     aria-invalid={!!form.formState.errors.phone}
@@ -147,18 +165,57 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
               )}
             </div>
             <div className="flex w-full flex-col gap-y-1.5">
-              <Input
-                {...form.register("address")}
-                placeholder="Адрес доставки"
-                required
-                aria-invalid={!!form.formState.errors.address}
-              />
-              {form.formState.errors.address && (
-                <span className="text-[11px] text-red-500 md:text-[16px]">
-                  {form.formState.errors.address.message}
+              <Select
+                onValueChange={(value) =>
+                  form.setValue("deliveryType", value as "pickup" | "delivery")
+                }
+                defaultValue="pickup"
+              >
+                <SelectTrigger className="flex w-full rounded-[7px] bg-[#EEE] p-2.5 font-inter text-[10px] leading-[13px] text-[#121212] transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#121212]/50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:cursor-not-allowed disabled:opacity-50 sm:rounded-[10px] sm:p-0 sm:py-2.5 sm:pl-[13px] sm:text-[17px] sm:leading-[20px] md:h-[63px] md:rounded-[14px] md:px-5 md:py-[17px] md:text-[24px] md:leading-[29px]">
+                  <SelectValue
+                    placeholder="Способ получения"
+                    className="truncate text-[10px] sm:text-[17px] md:text-[24px]"
+                  />
+                </SelectTrigger>
+                <SelectContent className="z-[9999] w-full rounded-[14px] border-none bg-[#EEE] p-1 font-inter text-[10px] sm:text-[14px] md:text-[24px]">
+                  <SelectItem
+                    value="pickup"
+                    className="rounded-[14px] p-2.5 transition-colors hover:bg-[#E0E0E0] focus:bg-[#E0E0E0] sm:py-2.5 sm:pl-[13px] md:px-5 md:py-[16px]"
+                  >
+                    Самовывоз
+                  </SelectItem>
+                  <SelectItem
+                    value="delivery"
+                    className="rounded-[7px] p-2.5 transition-colors hover:bg-[#E0E0E0] focus:bg-[#E0E0E0] sm:py-2.5 sm:pl-[13px] md:px-5 md:py-[17px]"
+                  >
+                    Доставка
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+
+              {form.watch("deliveryType") === "pickup" && (
+                <span className="text-[10px] text-[#121212]/50 sm:text-[14px] md:text-[16px]">
+                  ул. Лидии Базановой, д. 20
                 </span>
               )}
             </div>
+
+            {form.watch("deliveryType") === "delivery" && (
+              <div className="flex w-full flex-col gap-y-1.5">
+                <Input
+                  {...form.register("address")}
+                  placeholder="Адрес доставки"
+                  required
+                  aria-invalid={!!form.formState.errors.address}
+                />
+                {form.formState.errors.address && (
+                  <span className="text-[11px] text-red-500 md:text-[16px]">
+                    {form.formState.errors.address.message}
+                  </span>
+                )}
+              </div>
+            )}
+
             <span className="font-inter text-[11px] leading-[13px] text-black sm:text-[17px] sm:leading-[20px] md:text-[24px] md:leading-[29px]">
               Сумма сертификата
             </span>
@@ -172,19 +229,15 @@ export default function CertificatesForm({children}: {children?: ReactNode}) {
               ) : error ? (
                 <div>{error}</div>
               ) : (
-                certificates.map(
-                  (
-                    cert
-                  ) => (
-                    <RadioGroupItem
-                      key={cert.displayOrder}
-                      className="w-full"
-                      label={`${cert.value.toLocaleString()} ₽`}
-                      value={cert.value.toString()}
-                      id={`r${cert.displayOrder}`}
-                    />
-                  )
-                )
+                certificates.map((cert) => (
+                  <RadioGroupItem
+                    key={cert.displayOrder}
+                    className="w-full"
+                    label={`${cert.value.toLocaleString()} ₽`}
+                    value={cert.value.toString()}
+                    id={`r${cert.displayOrder}`}
+                  />
+                ))
               )}
             </RadioGroup>
             <Textarea

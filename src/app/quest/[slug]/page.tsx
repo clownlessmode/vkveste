@@ -124,7 +124,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
     currentIndex > 0 ? quests[currentIndex - 1] : quests[quests.length - 1]
   const nextQuest =
     currentIndex < quests.length - 1 ? quests[currentIndex + 1] : quests[0]
-
+  console.log(data)
   const difficultyIcons = Array.from({ length: 3 }, (_, index) => (
     <span
       key={index}
@@ -263,7 +263,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
                   </button>
                 )}
                 <Image
-                  src={`http://localhost:1338${data.cover.url}`}
+                  src={`http://89.104.69.151:1338${data.cover.url}`}
                   alt="Image"
                   className="absolute inset-0 z-10 size-full object-cover"
                   width={2400}

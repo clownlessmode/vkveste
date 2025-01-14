@@ -68,29 +68,42 @@ const QuestCard = ({
     <Link
       href={link}
       className={cn(
-        "relative flex h-[161px] w-full max-w-[311px] flex-col items-center justify-center gap-y-2 overflow-hidden rounded-[14px] border-[0.5px] border-white/50 transition-all duration-300 hover:scale-105 sm:h-[103px] sm:max-w-none sm:gap-y-1 md:h-40 md:gap-3 lg:h-[220px] xl:w-[420px] xl:gap-y-4"
+        "group relative flex h-[161px] w-full max-w-[311px] flex-col items-center justify-center gap-y-2 overflow-hidden rounded-[14px] border-[0.5px] border-white/50 transition-all duration-300 hover:scale-105 sm:h-[103px] sm:max-w-none sm:gap-y-1 md:h-40 md:gap-3 lg:h-[220px] xl:w-[420px] xl:gap-y-4"
       )}
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
-      <div className="inline-flex items-center sm:mb-1">{difficultyIcons}</div>
-      <span className="max-w-[326px] font-bold uppercase leading-[21px] sm:text-xs sm:leading-[14px] md:text-lg lg:text-[17px] xl:text-2xl xl:leading-[30px]">
-        {label}
-      </span>
-      <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px] -mt-[8px]">
-        {description}
-      </p>
-      <div className="absolute bottom-2.5 w-full flex px-[14px] inline-flex items-center gap-x-[5px] xl:gap-x-[7px] justify-between">
-        <p className="text-xs leading-[14px] sm:text-[6px] md:text-[10px] xl:text-[14px] xl:leading-[19px]">ул. Лидии Базановой, д. 20, оф. {index > 2 ? '30' : '28'}</p>
+      {/* Фоновое изображение с затемнением */}
+      <div
+        className="absolute inset-0 before:absolute before:inset-0 before:z-10 before:bg-black/60"
+        style={{
+          backgroundImage: `url(${background})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+
+      {/* Контент */}
+      <div className="relative z-20 flex flex-col items-center">
+        <div className="inline-flex items-center sm:mb-1">
+          {difficultyIcons}
+        </div>
+        <span className="max-w-[326px] font-bold uppercase leading-[21px] sm:text-xs sm:leading-[14px] md:text-lg lg:text-[17px] xl:text-2xl xl:leading-[30px]">
+          {label}
+        </span>
+        <p className="-mt-[6px] text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">
+          {description}
+        </p>
+      </div>
+
+      <div className="absolute bottom-2.5 z-20 flex inline-flex w-full items-center justify-between gap-x-[5px] px-[14px] xl:gap-x-[7px]">
+        <p className="text-xs leading-[14px] sm:text-[6px] md:text-[10px] xl:text-[14px] xl:leading-[19px]">
+          ул. Лидии Базановой, д. 20, оф. {index > 2 ? "30" : "28"}
+        </p>
         <div className="flex items-center gap-x-[5px]">
           <span className="text-xs leading-[14px] lg:text-[16px] xl:leading-[19px]">
             {players}
           </span>
           <PlayersIcon className="size-[17px] lg:size-[24px]" />
-      </div>
+        </div>
       </div>
     </Link>
   )

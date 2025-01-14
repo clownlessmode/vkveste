@@ -22,7 +22,7 @@ export default async function HolidaysPage() {
           className="absolute -right-[120px] top-[0px] z-0 block h-[400px] w-auto sm:-right-[160px] sm:h-[400px] md:-right-[120px] md:h-[600px] lg:-right-[120px] lg:h-[600px] xl:-right-[20px] xl:h-[600px]"
         />
         <MaxWidthWrapper>
-          <div className="relative z-10 flex max-w-[300px] flex-col gap-y-4 sm:max-w-[400px] md:max-w-[640px] md:gap-y-6 lg:max-w-[853px] lg:gap-y-10 xl:max-w-[1042px]">
+          <div className="relative z-10 flex max-w-[65vw] flex-col gap-y-4 sm:max-w-[75vw] md:max-w-[63vw] md:gap-y-6 lg:max-w-[65vw] lg:gap-y-10 xl:max-w-[1042px]">
             <h1 className="text-[28px] font-bold text-brand-main sm:text-[33px] md:text-[54px] lg:text-[72px] lg:leading-[89px]">
               Праздники ВКвесте
             </h1>
@@ -41,16 +41,16 @@ export default async function HolidaysPage() {
               тематические декорации, которые подчеркнут атмосферу праздника.
               Ваши лучшие воспоминания начинаются здесь!
             </p>
-            <div className="mt-4">
-              <span className="text-xs leading-[29px] md:text-lg lg:text-2xl">
-                Банкетная зона
-              </span>
-              <div className="mt-2 flex max-w-[200px] flex-col gap-x-3 gap-y-2 sm:max-w-full sm:flex-row md:mx-0 md:flex-col lg:mt-4 lg:max-w-[384px] lg:max-w-[512px] lg:gap-y-5">
-                <Button size="lg" variant="outline" className="w-full">
-                  +7 (4822) 630-444
-                </Button>
-                <RequestForm quests={quests} />
-              </div>
+          </div>
+          <div className="mt-4">
+            <span className="text-xs leading-[29px] md:text-lg lg:text-2xl">
+              Забронировать банкетную зону
+            </span>
+            <div className="mx-auto mt-2 flex max-w-[200px] flex-col gap-x-3 gap-y-2 sm:max-w-full sm:flex-row md:mx-0 md:flex-col lg:mt-4 lg:max-w-[384px] lg:max-w-[512px] lg:gap-y-5">
+              <Button size="lg" variant="outline" className="w-full">
+                +7 (4822) 630-444
+              </Button>
+              <RequestForm quests={quests} />
             </div>
           </div>
         </MaxWidthWrapper>
