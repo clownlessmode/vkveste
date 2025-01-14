@@ -271,7 +271,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
                     height={1200}
                     quality={100}
                   />
-                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute inset-0 bg-black/50" />
                 </div>
               </div>
             </div>
