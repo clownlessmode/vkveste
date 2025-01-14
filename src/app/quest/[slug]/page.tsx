@@ -262,14 +262,17 @@ export default async function QuestPage({ params }: QuestPageProps) {
                     </svg>
                   </button>
                 )}
-                <Image
-                  src={`http://89.104.69.151:1338${data.cover.url}`}
-                  alt="Image"
-                  className="absolute inset-0 z-10 size-full object-cover"
-                  width={2400}
-                  height={1200}
-                  quality={100}
-                />
+                <div className="absolute inset-0 z-10 size-full">
+                  <Image
+                    src={`http://89.104.69.151:1338${data.cover.url}`}
+                    alt="Image"
+                    className="size-full object-cover"
+                    width={2400}
+                    height={1200}
+                    quality={100}
+                  />
+                  <div className="absolute inset-0 bg-black/30" />
+                </div>
               </div>
             </div>
           </div>
