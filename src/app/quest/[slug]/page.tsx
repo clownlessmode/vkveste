@@ -74,6 +74,38 @@ const questIcons = {
     <DrinkIcon className="size-[19px] sm:size-[13px] md:size-5 lg:size-[26px]" />
   ),
 }
+
+const ratings = [
+  {
+    rating: "9.85",
+    count: "51",
+  },
+  {
+    rating: "8.77",
+    count: "30",
+  },
+  {
+    rating: "9.8",
+    count: "54",
+  },
+  {
+    rating: "8.9",
+    count: "28",
+  },
+  {
+    rating: "8.9",
+    count: "21",
+  },
+  {
+    rating: "8.2",
+    count: "14",
+  },
+  {
+    rating: "8.89",
+    count: "11",
+  },
+]
+
 export default async function QuestPage({ params }: QuestPageProps) {
   const response = await fetchFromStrapi("quests", {
     next: {
@@ -86,17 +118,21 @@ export default async function QuestPage({ params }: QuestPageProps) {
   if (!quest) notFound()
 
   const data = quest
-
   const quests = response.data
   const currentIndex = quests.findIndex((q) => q.slug === params.slug)
-  const prevQuest = currentIndex > 0 ? quests[currentIndex - 1] : null
+  const prevQuest =
+    currentIndex > 0 ? quests[currentIndex - 1] : quests[quests.length - 1]
   const nextQuest =
-    currentIndex < quests.length - 1 ? quests[currentIndex + 1] : null
+    currentIndex < quests.length - 1 ? quests[currentIndex + 1] : quests[0]
 
   const difficultyIcons = Array.from({ length: 3 }, (_, index) => (
     <span
       key={index}
-      className={index < data.statistics.difficulty ? "text-brand-main" : "text-[#6A6A6A]"}
+      className={
+        index < data.statistics.difficulty
+          ? "text-brand-main"
+          : "text-[#6A6A6A]"
+      }
     >
       {questIcons[data.statistics.type]}
     </span>
@@ -104,9 +140,8 @@ export default async function QuestPage({ params }: QuestPageProps) {
   return (
     <div className="flex flex-col gap-y-[60px] pb-16 pt-[60px] sm:gap-20 sm:pt-20 lg:gap-[120px] lg:gap-y-[160px] lg:pb-[160px] lg:pt-[120px] xl:pt-[140px]">
       <section className="relative">
-         
         <MaxWidthWrapper className="relative">
-          <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px] p-2">
+          <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main p-2 sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px]">
             <div className="relative z-30 flex flex-col gap-y-1 lg:gap-y-5">
               <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[54px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
                 {data.name}
@@ -145,31 +180,40 @@ export default async function QuestPage({ params }: QuestPageProps) {
                   </span>
                 </span>
               </div>
-              
+
               <div className="flex flex-col sm:gap-0.5 md:gap-1.5 lg:mt-8 lg:gap-y-1">
                 <span className="bg-gradient-to-b from-brand-main via-[#F8BC0F] to-[#F6A819] bg-clip-text pl-1 font-inter text-sm font-semibold text-transparent sm:text-[17px] md:text-2xl md:leading-8 lg:text-[36px] xl:leading-[44px]">
-                  12
+                  {ratings[data.order - 1]?.rating ?? 0}
                 </span>
                 <span className="pl-[1px] font-inter text-xs font-semibold leading-4 sm:text-[11px] md:text-lg md:leading-[22px] lg:text-2xl lg:leading-[29px]">
                   Рейтинг квеста
                 </span>
                 <span className="font-inter text-[9px] leading-[10px] md:text-xs lg:text-[16px] xl:leading-[19px]">
-                  На основе 51 оценки
+                  На основе {ratings[data.order - 1]?.count ?? 0}{" "}
+                  {(ratings[data.order - 1]?.count ?? 0) === 1
+                    ? "оценки"
+                    : (ratings[data.order - 1]?.count ?? 0) % 10 === 1 &&
+                        (ratings[data.order - 1]?.count ?? 0) % 100 !== 11
+                      ? "оценки"
+                      : (ratings[data.order - 1]?.count ?? 0) % 10 >= 2 &&
+                          (ratings[data.order - 1]?.count ?? 0) % 10 <= 4 &&
+                          ((ratings[data.order - 1]?.count ?? 0) % 100 < 10 ||
+                            (ratings[data.order - 1]?.count ?? 0) % 100 >= 20)
+                        ? "оценок"
+                        : "оценок"}
                 </span>
               </div>
             </div>
-            
+
             <div className="relative z-[101] mt-2 inline-flex items-center gap-2.5 md:gap-5 xl:gap-x-5">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="gradient"
-                  className="w-full max-w-[268px] hover:opacity-75"
-                >
-                  <Link href="/booking">
-                      Записаться
-                  </Link>
-                </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="gradient"
+                className="w-full max-w-[268px] hover:opacity-75"
+              >
+                <Link href="/booking">Записаться</Link>
+              </Button>
               <CertificatesForm>
                 <Button
                   size="lg"
@@ -181,94 +225,135 @@ export default async function QuestPage({ params }: QuestPageProps) {
               </CertificatesForm>
               <ShareButton />
             </div>
-            
+
             <div className="absolute inset-0 size-full h-60 sm:h-full md:mt-32 md:h-[406px] lg:top-0 lg:mt-0 lg:h-full">
               <div className="bg-quest-1 relative h-full w-full">
                 <div className="bg-quest-2 sm:bg-quest-1 md:bg-quest-2 lg:bg-quest-1 absolute inset-0 z-20 size-full"></div>
-                {data.name === 'Техасская резня бензопилой' && ( <button>
-                  <svg
-                    width="116"
-                    height="116"
-                    viewBox="0 0 116 116"
-                    fill="none"
-                    className="absolute inset-y-0 left-1/2 right-[252px] top-1/2 z-30 size-14 -translate-x-1/2 -translate-y-1/2 sm:left-2/3 sm:-translate-x-0 md:left-1/2 md:h-auto md:w-auto md:-translate-x-1/2 lg:left-[60%] lg:translate-x-0 xl:left-[70%]"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M21.4452 22.3369C21.5844 21.1663 21.9948 20.0443 22.6437 19.0601C23.2927 18.0759 24.1623 17.2567 25.1834 16.6676C26.2045 16.0784 27.3489 15.7356 28.5258 15.6664C29.7026 15.5972 30.8794 15.8034 31.9625 16.2688C37.4377 18.6094 49.7079 25.5837 65.2777 34.5698C80.8526 43.5611 91.8082 50.0016 96.5668 53.5641C100.629 56.611 100.64 62.6533 96.5719 65.7106C91.8597 69.2525 80.6736 75.783 64.913 84.8877C49.137 93.9924 37.3758 100.706 31.9522 103.016C27.2813 105.011 22.0535 101.985 21.4452 96.9481C20.7337 91.0605 22.2773 78.7437 22.2773 60.689C22.2773 42.6446 20.7285 28.2297 21.4452 22.3369Z"
-                      fill="url(#paint0_linear_1_1536)"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="paint0_linear_1_1536"
-                        x1="59.5107"
-                        y1="15.6533"
-                        x2="59.5107"
-                        y2="103.637"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stop-color="#FACC07" />
-                        <stop offset="0.5" stop-color="#F8BC0F" />
-                        <stop offset="1" stop-color="#F6A819" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </button>)}
+                {data.name === "Техасская резня бензопилой" && (
+                  <button>
+                    <svg
+                      width="116"
+                      height="116"
+                      viewBox="0 0 116 116"
+                      fill="none"
+                      className="absolute inset-y-0 left-1/2 right-[252px] top-1/2 z-30 size-14 -translate-x-1/2 -translate-y-1/2 sm:left-2/3 sm:-translate-x-0 md:left-1/2 md:h-auto md:w-auto md:-translate-x-1/2 lg:left-[60%] lg:translate-x-0 xl:left-[70%]"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M21.4452 22.3369C21.5844 21.1663 21.9948 20.0443 22.6437 19.0601C23.2927 18.0759 24.1623 17.2567 25.1834 16.6676C26.2045 16.0784 27.3489 15.7356 28.5258 15.6664C29.7026 15.5972 30.8794 15.8034 31.9625 16.2688C37.4377 18.6094 49.7079 25.5837 65.2777 34.5698C80.8526 43.5611 91.8082 50.0016 96.5668 53.5641C100.629 56.611 100.64 62.6533 96.5719 65.7106C91.8597 69.2525 80.6736 75.783 64.913 84.8877C49.137 93.9924 37.3758 100.706 31.9522 103.016C27.2813 105.011 22.0535 101.985 21.4452 96.9481C20.7337 91.0605 22.2773 78.7437 22.2773 60.689C22.2773 42.6446 20.7285 28.2297 21.4452 22.3369Z"
+                        fill="url(#paint0_linear_1_1536)"
+                      />
+                      <defs>
+                        <linearGradient
+                          id="paint0_linear_1_1536"
+                          x1="59.5107"
+                          y1="15.6533"
+                          x2="59.5107"
+                          y2="103.637"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#FACC07" />
+                          <stop offset="0.5" stop-color="#F8BC0F" />
+                          <stop offset="1" stop-color="#F6A819" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </button>
+                )}
                 <Image
-                  src={`http://89.104.69.151:1338${data.cover.url}`}
+                  src={`http://localhost:1338${data.cover.url}`}
                   alt="Image"
                   className="absolute inset-0 z-10 size-full object-cover"
                   width={2400}
                   height={1200}
                   quality={100}
                 />
-              
               </div>
             </div>
           </div>
-          <div className="absolute inset-0 z-[100] size-full justify-between items-center hidden lg:flex">
-            {prevQuest ? (
-              <Link href={`/quest/${prevQuest.slug}`} className="xl:-ml-[25px] -ml-[10px] hover:scale-105  transition-all duration-300 bg-[#0D0D0D] rotate-180 xl:w-[90px] xl:h-[80px] w-[60px] h-[50px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
-                <svg width="24" height="15" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="xl:w-[36px] xl:h-[22px]">
-                  <path d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z" fill="#F8BC0F"/>
-                </svg>
-              </Link>
-            ): (
-              <div className="invisible">a</div>
-            )}
-  
-            {nextQuest && (
-             <Link href={`/quest/${nextQuest.slug}`} className="xl:-mr-[25px]  -mr-[10px] hover:scale-105  transition-all duration-300 bg-[#0D0D0D] xl:w-[90px] xl:h-[80px] w-[60px] h-[50px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
-                <svg width="24" height="15" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="xl:w-[36px] xl:h-[22px]">
-                  <path d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z" fill="#F8BC0F"/>
-                </svg>
-              </Link>
-            )}
+          <div className="absolute inset-0 z-[100] hidden size-full items-center justify-between lg:flex">
+            <Link
+              href={`/quest/${prevQuest.slug}`}
+              className="-ml-[10px] flex h-[50px] w-[60px] rotate-180 items-center justify-center rounded-[14px] border-[2px] border-[#F8BC0F] bg-[#0D0D0D] transition-all duration-300 hover:scale-105 xl:-ml-[25px] xl:h-[80px] xl:w-[90px]"
+            >
+              <svg
+                width="24"
+                height="15"
+                viewBox="0 0 36 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="xl:h-[22px] xl:w-[36px]"
+              >
+                <path
+                  d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z"
+                  fill="#F8BC0F"
+                />
+              </svg>
+            </Link>
+
+            <Link
+              href={`/quest/${nextQuest.slug}`}
+              className="-mr-[10px] flex h-[50px] w-[60px] items-center justify-center rounded-[14px] border-[2px] border-[#F8BC0F] bg-[#0D0D0D] transition-all duration-300 hover:scale-105 xl:-mr-[25px] xl:h-[80px] xl:w-[90px]"
+            >
+              <svg
+                width="24"
+                height="15"
+                viewBox="0 0 36 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="xl:h-[22px] xl:w-[36px]"
+              >
+                <path
+                  d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z"
+                  fill="#F8BC0F"
+                />
+              </svg>
+            </Link>
           </div>
         </MaxWidthWrapper>
         <MaxWidthWrapper>
-         <div className="mt-3 inset-0 z-[999] size-full justify-between items-center flex lg:hidden">
-            {prevQuest ? (
-              <Link href={`/quest/${prevQuest.slug}`} className="hover:scale-105  transition-all duration-300 bg-[#0D0D0D] rotate-180 xl:w-[90px] xl:h-[80px] w-[60px] h-[50px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
-                <svg width="24" height="15" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="xl:w-[36px] xl:h-[22px]">
-                  <path d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z" fill="#F8BC0F"/>
-                </svg>
-              </Link>
-            ): (
-              <div className="invisible">a</div>
-            )}
-  
-            {nextQuest && (
-             <Link href={`/quest/${nextQuest.slug}`} className=" hover:scale-105  transition-all duration-300 bg-[#0D0D0D] xl:w-[90px] xl:h-[80px] w-[60px] h-[50px] border-[2px] border-[#F8BC0F] rounded-[14px] flex justify-center items-center">
-                <svg width="24" height="15" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="xl:w-[36px] xl:h-[22px]">
-                  <path d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z" fill="#F8BC0F"/>
-                </svg>
-              </Link>
-            )}
+          <div className="inset-0 z-[999] mt-3 flex size-full items-center justify-between lg:hidden">
+            <Link
+              href={`/quest/${prevQuest.slug}`}
+              className="flex h-[50px] w-[60px] rotate-180 items-center justify-center rounded-[14px] border-[2px] border-[#F8BC0F] bg-[#0D0D0D] transition-all duration-300 hover:scale-105 xl:h-[80px] xl:w-[90px]"
+            >
+              <svg
+                width="24"
+                height="15"
+                viewBox="0 0 36 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="xl:h-[22px] xl:w-[36px]"
+              >
+                <path
+                  d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z"
+                  fill="#F8BC0F"
+                />
+              </svg>
+            </Link>
+
+            <Link
+              href={`/quest/${nextQuest.slug}`}
+              className="flex h-[50px] w-[60px] items-center justify-center rounded-[14px] border-[2px] border-[#F8BC0F] bg-[#0D0D0D] transition-all duration-300 hover:scale-105 xl:h-[80px] xl:w-[90px]"
+            >
+              <svg
+                width="24"
+                height="15"
+                viewBox="0 0 36 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="xl:h-[22px] xl:w-[36px]"
+              >
+                <path
+                  d="M25.2874 0C25.8369 6.85624e-05 26.3795 0.123675 26.8748 0.361677C27.3702 0.59968 27.8057 0.945991 28.1492 1.375L34.9325 9.85417C35.1929 10.1793 35.3347 10.5835 35.3347 11C35.3347 11.4165 35.1929 11.8207 34.9325 12.1458L28.1492 20.6232C27.8059 21.0525 27.3704 21.3992 26.8751 21.6375C26.3797 21.8758 25.8371 21.9997 25.2874 22H2.33403C1.98872 21.9998 1.6505 21.9021 1.3583 21.7181C1.0661 21.5341 0.831801 21.2713 0.682378 20.96C0.532955 20.6487 0.474484 20.3015 0.513697 19.9585C0.552909 19.6154 0.688212 19.2904 0.904026 19.0208L7.32069 11L0.904026 2.97917C0.698468 2.72327 0.565383 2.41687 0.518665 2.09198C0.471948 1.76709 0.513312 1.43561 0.638438 1.13216C0.763564 0.82871 0.967863 0.564418 1.23 0.366881C1.49214 0.169343 1.80251 0.0458054 2.12869 0.00916688L2.33403 0H25.2874Z"
+                  fill="#F8BC0F"
+                />
+              </svg>
+            </Link>
           </div>
-          </MaxWidthWrapper>
+        </MaxWidthWrapper>
       </section>
       <section>
         <MaxWidthWrapper>
@@ -276,7 +361,10 @@ export default async function QuestPage({ params }: QuestPageProps) {
             <h2 className="font-inter font-semibold text-brand-main md:text-lg lg:text-[36px]">
               Сюжет
             </h2>
-            <p className="font-inter text-sm leading-4 lg:text-2xl lg:leading-[29px]" dangerouslySetInnerHTML={{ __html: data.lore }} />
+            <p
+              className="font-inter text-sm leading-4 lg:text-2xl lg:leading-[29px]"
+              dangerouslySetInnerHTML={{ __html: data.lore }}
+            />
             <span className="inline-flex items-center gap-3 pt-5 lg:gap-x-5">
               <svg
                 width="35"

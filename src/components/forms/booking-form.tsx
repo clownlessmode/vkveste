@@ -104,7 +104,7 @@ const BookingForm = React.memo(function BookingForm({
   const [isSuccess, setSuccess] = useState<boolean>(false)
   const [isMainDialogOpen, setMainDialogOpen] = useState<boolean>(false)
 
-  const API_BASE_URL = `http://89.104.69.151:1338`
+  const API_BASE_URL = `http://localhost:1338`
 
   const mutation = useMutation({
     mutationFn: async ({
@@ -217,7 +217,7 @@ const BookingForm = React.memo(function BookingForm({
   return (
     <>
       <Dialog open={isSuccess} onOpenChange={setSuccess}>
-        <DialogContent className="!max-w-[400px] !rounded-[14px] !p-0 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-h-[90vh] !max-w-[400px] overflow-y-auto !rounded-[14px] !p-0">
           <div className="flex w-full flex-col items-center gap-y-2.5 rounded-[14px] border-[2.5px] border-[#F9800F] bg-white py-[25px]">
             <svg
               width="105"
@@ -262,24 +262,24 @@ const BookingForm = React.memo(function BookingForm({
           </span>
           <div className="grid w-full grid-flow-row grid-cols-2 justify-between gap-y-2.5 pb-2.5 sm:pb-[26px] md:pb-10">
             <div className="flex flex-col gap-y-0.5">
-              <h4 className="font-medium text-[16px] text-black">Дата</h4>
+              <h4 className="text-[16px] font-medium text-black">Дата</h4>
               <span className="inline-flex items-center gap-x-0.5 font-inter text-black md:gap-x-[5px]">
-              <svg
-                className="size-[13px] sm:size-[18px] md:size-[27px]"
-                width="27"
-                height="27"
-                viewBox="0 0 27 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M18.5625 5.625V3.375M8.4375 5.625V3.375M3.65625 9H23.3438M3.375 11.2995C3.375 8.92012 3.375 7.72988 3.8655 6.82088C4.30903 6.01009 4.99724 5.36007 5.832 4.9635C6.795 4.5 8.055 4.5 10.575 4.5H16.425C18.945 4.5 20.205 4.5 21.168 4.9635C22.0151 5.37075 22.7025 6.021 23.1345 6.81975C23.625 7.731 23.625 8.92125 23.625 11.3006V16.8266C23.625 19.206 23.625 20.3962 23.1345 21.3052C22.691 22.116 22.0028 22.7661 21.168 23.1626C20.205 23.625 18.945 23.625 16.425 23.625H10.575C8.055 23.625 6.795 23.625 5.832 23.1615C4.99741 22.7652 4.30921 22.1156 3.8655 21.3052C3.375 20.394 3.375 19.2037 3.375 16.8244V11.2995Z"
-                  stroke="black"
-                  strokeWidth="1.6875"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+                <svg
+                  className="size-[13px] sm:size-[18px] md:size-[27px]"
+                  width="27"
+                  height="27"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.5625 5.625V3.375M8.4375 5.625V3.375M3.65625 9H23.3438M3.375 11.2995C3.375 8.92012 3.375 7.72988 3.8655 6.82088C4.30903 6.01009 4.99724 5.36007 5.832 4.9635C6.795 4.5 8.055 4.5 10.575 4.5H16.425C18.945 4.5 20.205 4.5 21.168 4.9635C22.0151 5.37075 22.7025 6.021 23.1345 6.81975C23.625 7.731 23.625 8.92125 23.625 11.3006V16.8266C23.625 19.206 23.625 20.3962 23.1345 21.3052C22.691 22.116 22.0028 22.7661 21.168 23.1626C20.205 23.625 18.945 23.625 16.425 23.625H10.575C8.055 23.625 6.795 23.625 5.832 23.1615C4.99741 22.7652 4.30921 22.1156 3.8655 21.3052C3.375 20.394 3.375 19.2037 3.375 16.8244V11.2995Z"
+                    stroke="black"
+                    strokeWidth="1.6875"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
                 <span className="text-[11px] leading-[13px] sm:text-[16px] sm:leading-[19px] md:text-[24px] md:leading-[29px]">
                   {format(date, "dd.MM.yy")}
                 </span>
@@ -298,7 +298,7 @@ const BookingForm = React.memo(function BookingForm({
               )}
             </span>
             <div className="flex flex-col gap-y-0.5">
-              <h4 className="font-medium text-[16px] text-black">Время</h4>
+              <h4 className="text-[16px] font-medium text-black">Время</h4>
               <span className="inline-flex items-center gap-x-0.5 font-inter text-black md:gap-x-[5px]">
                 <svg
                   className="size-[13px] sm:size-[18px] md:size-[27px]"

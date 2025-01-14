@@ -77,16 +77,18 @@ export async function generateMetadata(): Promise<Metadata> {
   const headersList = headers()
   const pathname = headersList.get("x-pathname") || "/"
   const normalizedPath = pathname.replace(/^\//, "")
-  
+
   const seoData = await getSeoData(normalizedPath)
-  
+
   if (!seoData) return defaultMetadata
 
   return {
     ...defaultMetadata,
     title: seoData.metaTitle || defaultMetadata.title,
     description: seoData.metaDescription || defaultMetadata.description,
-    ...(seoData.keywords && { keywords: seoData.keywords.split(',').map(k => k.trim()) }),
+    ...(seoData.keywords && {
+      keywords: seoData.keywords.split(",").map((k) => k.trim()),
+    }),
     ...(seoData.metaRobots && { robots: seoData.metaRobots }),
     ...(seoData.canonicalURL && {
       alternates: {
@@ -96,12 +98,14 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       ...defaultMetadata.openGraph,
       ...(seoData.metaImage?.data && {
-        images: [{
-          url: `http://89.104.69.151:1338/${seoData.metaImage.data.attributes.url}`,
-          width: seoData.metaImage.data.attributes.width,
-          height: seoData.metaImage.data.attributes.height,
-          alt: seoData.metaImage.data.attributes.alternativeText,
-        }],
+        images: [
+          {
+            url: `http://localhost:1338/${seoData.metaImage.data.attributes.url}`,
+            width: seoData.metaImage.data.attributes.width,
+            height: seoData.metaImage.data.attributes.height,
+            alt: seoData.metaImage.data.attributes.alternativeText,
+          },
+        ],
       }),
     },
   }

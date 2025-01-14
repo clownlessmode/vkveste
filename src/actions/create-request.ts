@@ -4,9 +4,15 @@ interface SubmitFormProps {
   name: string
   phone: string
   comment?: string
+  questName?: string
 }
 
-export async function submitForm({ name, phone, comment }: SubmitFormProps) {
+export async function submitForm({
+  name,
+  phone,
+  comment,
+  questName,
+}: SubmitFormProps) {
   try {
     if (!process.env.GOOGLE_SHEET_REQUESTS) {
       throw new Error(
@@ -20,6 +26,7 @@ export async function submitForm({ name, phone, comment }: SubmitFormProps) {
         name: name,
         phone: phone,
         comment: comment,
+        questName: questName,
       }),
     })
 

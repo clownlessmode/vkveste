@@ -45,20 +45,20 @@ export function InlineCalendar({ onSelectDate }: InlineCalendarProps) {
   const weeks = useMemo(() => {
     const result = []
     let currentWeek = []
-    
+
     for (const date of dates) {
       currentWeek.push(date)
-      
+
       if (currentWeek.length === 7) {
         result.push(currentWeek)
         currentWeek = []
       }
     }
-    
+
     if (currentWeek.length > 0) {
       result.push(currentWeek)
     }
-    
+
     return result
   }, [dates])
 
@@ -68,41 +68,41 @@ export function InlineCalendar({ onSelectDate }: InlineCalendarProps) {
   }
 
   return (
-  //   // <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] xl:overflow-auto xl:px-0">
-  //   <div className="flex flex-col gap-y-1">
-  //    {weeks.map((week, weekIndex) => (
-  //     <div key={weekIndex} className="inline-flex items-center gap-x-[4px] overflow-x-scroll xl:overflow-auto">
-  //       {week.map((date) => (
-  //         <button
-  //           onClick={() => handleDateClick(date)}
-  //           className={cn(
-  //             "inline-flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
-  //             isSameDay(date, selectedDate)
-  //               ? "!border-none !bg-[#F8470F] text-white"
-  //               : "",
-  //             isWeekend(date) ? "border-[#909090] bg-gray-200" : ""
-  //           )}
-  //           key={date.toISOString()}
-  //         >
-  //           <div className="mx-auto flex flex-col items-center justify-center">
-  //             <span className="text-[12px] font-semibold leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
-  //               {format(date, "d")}
-  //             </span>
-  //             <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
-  //               {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
-  //             </span>
-  //           </div>
-  //         </button>
-  //       ))}
-  //     </div>
-  //   ))}
-  // </div>
-  <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] pb-[25px] xl:overflow-auto xl:px-0">
+    //   // <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] xl:overflow-auto xl:px-0">
+    //   <div className="flex flex-col gap-y-1">
+    //    {weeks.map((week, weekIndex) => (
+    //     <div key={weekIndex} className="inline-flex items-center gap-x-[4px] overflow-x-scroll xl:overflow-auto">
+    //       {week.map((date) => (
+    //         <button
+    //           onClick={() => handleDateClick(date)}
+    //           className={cn(
+    //             "inline-flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
+    //             isSameDay(date, selectedDate)
+    //               ? "!border-none !bg-[#F8470F] text-white"
+    //               : "",
+    //             isWeekend(date) ? "border-[#909090] bg-gray-200" : ""
+    //           )}
+    //           key={date.toISOString()}
+    //         >
+    //           <div className="mx-auto flex flex-col items-center justify-center">
+    //             <span className="text-[12px] font-semibold leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
+    //               {format(date, "d")}
+    //             </span>
+    //             <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
+    //               {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
+    //             </span>
+    //           </div>
+    //         </button>
+    //       ))}
+    //     </div>
+    //   ))}
+    // </div>
+    <div className="inline-flex items-center gap-x-[4px] overflow-x-scroll px-[17px] pb-[25px] xl:overflow-auto xl:px-0">
       {dates.map((date) => (
         <button
           onClick={() => handleDateClick(date)}
           className={cn(
-            "flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px]  border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
+            "flex size-[38px] w-[38px] shrink-0 items-start rounded-[7px] border border-transparent text-[#909090] xl:size-[44px] xl:w-[44px]",
             isSameDay(date, selectedDate)
               ? "!border-none !bg-[#F8470F] text-white"
               : "",
@@ -115,7 +115,9 @@ export function InlineCalendar({ onSelectDate }: InlineCalendarProps) {
               {format(date, "d")}
             </span>
             <span className="text-[12px] leading-[17px] xl:text-[14px] xl:leading-[19.6px]">
-              {format(date, "eee", { locale: ru }).slice(0, 2).replace("су", "сб")}
+              {format(date, "eee", { locale: ru })
+                .slice(0, 2)
+                .replace("су", "сб")}
             </span>
           </div>
         </button>
@@ -145,11 +147,15 @@ interface InlineQuestsProps {
   singleQuestId?: string
 }
 
-export function InlineQuests({ quests, selectedDate, singleQuestId }: InlineQuestsProps) {
+export function InlineQuests({
+  quests,
+  selectedDate,
+  singleQuestId,
+}: InlineQuestsProps) {
   const activeQuests = useMemo(() => {
     const filteredQuests = quests.filter((quest) => !quest.disabled)
-    return singleQuestId 
-      ? filteredQuests.filter(quest => quest.name === singleQuestId)
+    return singleQuestId
+      ? filteredQuests.filter((quest) => quest.name === singleQuestId)
       : filteredQuests
   }, [quests, singleQuestId])
   const [selectedQuestId, setSelectedQuestId] = useState<string | null>(null)
@@ -203,37 +209,39 @@ export function InlineQuests({ quests, selectedDate, singleQuestId }: InlineQues
       {!singleQuestId && (
         <div className="flex gap-[5px] overflow-x-auto md:hidden">
           {activeQuests.map((quest) => (
-          <button
-            key={quest.id}
-            onClick={() =>
-              setSelectedQuestId(selectedQuestId === quest.id ? null : quest.id)
-            }
-            className={cn(
-              "flex max-h-[72px] max-w-[120px] flex-col items-center justify-between gap-y-1 rounded-[12px] border border-white/50 bg-black px-2.5 py-2.5",
-              "text-center text-[12px] font-semibold",
-              selectedQuestId === quest.id &&
-                "border-brand-main bg-brand-main/10"
-            )}
-          >
-            {quest.name}
-            <div className="inline-flex items-center gap-x-[1px]">
-              {Array.from({ length: 3 }, (_, index) => (
-                <span
-                  key={index}
-                  className={
-                    index < quest.difficulty
-                      ? "text-brand-main"
-                      : "text-[#6A6A6A]"
-                  }
-                >
-                  {questIcons[quest.type]}
-                </span>
-              ))}
-            </div>
-          </button>
+            <button
+              key={quest.id}
+              onClick={() =>
+                setSelectedQuestId(
+                  selectedQuestId === quest.id ? null : quest.id
+                )
+              }
+              className={cn(
+                "flex h-[72px] w-full max-w-[140px] shrink-0 flex-col items-center justify-between gap-y-1 rounded-[12px] border border-white/50 bg-black px-2 py-2",
+                "text-center text-[12px] font-semibold",
+                selectedQuestId === quest.id &&
+                  "border-brand-main bg-brand-main/10"
+              )}
+            >
+              {quest.name}
+              <div className="inline-flex items-center gap-x-[1px]">
+                {Array.from({ length: 3 }, (_, index) => (
+                  <span
+                    key={index}
+                    className={
+                      index < quest.difficulty
+                        ? "text-brand-main"
+                        : "text-[#6A6A6A]"
+                    }
+                  >
+                    {questIcons[quest.type]}
+                  </span>
+                ))}
+              </div>
+            </button>
           ))}
-          </div>
-        )}
+        </div>
+      )}
 
       {/* Desktop Layout */}
       <div className="hidden flex-col gap-y-[30px] md:flex">
@@ -250,17 +258,18 @@ export function InlineQuests({ quests, selectedDate, singleQuestId }: InlineQues
 
       {/* Mobile Layout */}
       <div className="md:hidden">
-        {activeQuests.map((quest) =>
-          (singleQuestId || selectedQuestId === quest.id) && (
-            <QuestTimelineRow
-              key={quest.id}
-              quest={quest}
-              selectedDate={selectedDate}
-              isSlotAvailable={isSlotAvailable}
-              isLoading={isLoading}
-              isMobile
-            />
-          )
+        {activeQuests.map(
+          (quest) =>
+            (singleQuestId || selectedQuestId === quest.id) && (
+              <QuestTimelineRow
+                key={quest.id}
+                quest={quest}
+                selectedDate={selectedDate}
+                isSlotAvailable={isSlotAvailable}
+                isLoading={isLoading}
+                isMobile
+              />
+            )
         )}
       </div>
     </div>
@@ -299,7 +308,7 @@ function QuestTimelineRow({
     <div className="flex flex-col md:flex-row">
       {!isMobile && (
         <div className="w-[150px] shrink-0">
-          <div className="flex h-[80px] w-[130px] flex-col items-center justify-center rounded-[14px] border border-white/50 bg-black pt-1 xl:gap-y-2">
+          <div className="flex h-[80px] w-[160px] flex-col items-center justify-center rounded-[14px] border border-white/50 bg-black p-2 xl:gap-y-2">
             <span className="text-center text-[14px] font-semibold leading-[17px]">
               {quest.name}
             </span>

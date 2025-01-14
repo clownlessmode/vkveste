@@ -38,7 +38,7 @@ async function QuestSection() {
       type: quest.statistics.type,
       difficulty: quest.statistics.difficulty,
       players: quest.statistics.players,
-      background: `http://89.104.69.151:1338${quest.cover.url}`,
+      background: `http://localhost:1338${quest.cover.url}`,
       link: `/quest/${quest.slug}`,
       order: quest.order,
     }))
@@ -53,8 +53,8 @@ async function QuestSection() {
           </h2>
           <div className="flex flex-col items-center gap-y-5">
             <div className="grid w-full place-items-center gap-2.5 text-center sm:grid-cols-2 sm:place-items-stretch md:gap-4 lg:grid-flow-row xl:grid-cols-3">
-              {mappedQuests.map((quest,index) => (
-                <QuestCard key={quest.label} {...quest} index={index}/>
+              {mappedQuests.map((quest, index) => (
+                <QuestCard key={quest.label} {...quest} index={index} />
               ))}
               <div className="hidden max-w-[311px] sm:block sm:max-w-none">
                 <div
@@ -110,7 +110,7 @@ async function QuestSection() {
           src={quest_background}
           alt="background"
           placeholder="blur"
-          className="absolute inset-x-0 bottom-[44px] top-1/2 z-[-5] mx-auto h-full w-full object-cover object-center -translate-y-1/2 sm:h-auto lg:top-0 lg:translate-y-0 xl:top-[40px]"
+          className="absolute inset-x-0 bottom-[44px] top-1/2 z-[-5] mx-auto h-full w-full -translate-y-1/2 object-cover object-center sm:h-auto lg:top-0 lg:translate-y-0 xl:top-[40px]"
         />
       </section>
     </>
