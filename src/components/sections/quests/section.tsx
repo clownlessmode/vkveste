@@ -53,8 +53,8 @@ async function QuestSection() {
           </h2>
           <div className="flex flex-col items-center gap-y-5">
             <div className="grid w-full place-items-center gap-2.5 text-center sm:grid-cols-2 sm:place-items-stretch md:gap-4 lg:grid-flow-row xl:grid-cols-3">
-              {mappedQuests.map((quest) => (
-                <QuestCard key={quest.label} {...quest} />
+              {mappedQuests.map((quest,index) => (
+                <QuestCard key={quest.label} {...quest} index={index}/>
               ))}
               <div className="hidden max-w-[311px] sm:block sm:max-w-none">
                 <div

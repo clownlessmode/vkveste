@@ -6,8 +6,11 @@ import { MaxWidthWrapper } from "@/components/width-wrapper"
 import baloons from "../../../public/holidays_baloons.png"
 import Image from "next/image"
 import RequestForm from "@/components/forms/request-form"
+import { getQuestsData } from "@/components/forms/request-form-server"
 
-export default function HolidaysPage() {
+export default async function HolidaysPage() {
+  const quests = await getQuestsData()
+
   return (
     <div className="flex flex-col gap-y-[60px] pb-16 pt-[60px] sm:gap-20 sm:pt-20 lg:gap-[120px] lg:gap-y-[160px] lg:pb-[160px] lg:pt-[120px] xl:pt-[140px]">
       <section className="relative overflow-x-clip">
@@ -45,7 +48,7 @@ export default function HolidaysPage() {
                 <Button size="lg" variant="outline" className="w-full">
                   +7 (4822) 630-444
                 </Button>
-                <RequestForm />
+                <RequestForm quests={quests} />
               </div>
             </div>
           </div>

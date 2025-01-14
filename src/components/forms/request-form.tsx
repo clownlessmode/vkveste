@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
-
 import { submitForm } from "@/actions/create-request"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTransition } from "react"
@@ -29,7 +28,12 @@ const formSchema = z.object({
   comment: z.string().optional(),
 })
 
-export default function RequestForm({className}: {className?: string}) {
+interface RequestFormProps {
+  className?: string
+  quests: QuestCardProps[]
+}
+
+export default function RequestForm({ className, quests }: RequestFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
@@ -67,7 +71,7 @@ export default function RequestForm({className}: {className?: string}) {
           Оставить заявку
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-h-[90vh] overflow-y-auto">
         <span className="pb-5 font-inter text-[17px] font-semibold leading-[21px] text-black sm:pb-[34px] md:pb-10 md:text-[36px] md:leading-[44px]">
           Оставить заявку
         </span>
@@ -112,6 +116,15 @@ export default function RequestForm({className}: {className?: string}) {
               placeholder="Комментарий"
               className="resize-none"
             />
+
+            <div className="flex w-full flex-col gap-y-1.5">
+              <p className="text-center font-semibold text-black text-[24px] leading-[29px]">Укажите тему</p>
+             {quests.map((quest) => (
+              <div key={quest.id} className="h-[72px] w-full rounded-[14px] bg-[#EEEEEE] flex items-center justify-center">
+                <p className="text-black">{quest.label}</p>
+              </div>
+             ))}
+            </div>
 
             <p className="text-center font-inter text-[11px] leading-[13px] text-black md:text-[16px] md:leading-[19px]">
               С Вами свяжутся в течении дня

@@ -10,8 +10,11 @@ import RequestForm from "@/components/forms/request-form"
 import Image from "next/image"
 import Link from "next/link"
 import findUsPattern from "../../public/find-us-pattern.png"
+import { getQuestsData } from "@/components/forms/request-form-server"
 
 export default async function Home() {
+  const quests = await getQuestsData()
+
   return (
     <main className="flex flex-col gap-y-[60px] pb-16 sm:gap-20 lg:gap-[120px] lg:gap-y-[160px] lg:pb-[160px]">
       <section className="relative w-full overflow-x-hidden">
@@ -115,7 +118,7 @@ export default async function Home() {
                   <Button asChild variant={"outline"} size={"lg"}>
                     <Link href="tel:+74822630444">+7 (4822) 630-444</Link>
                   </Button>
-                  <RequestForm />
+                  <RequestForm quests={quests} />
                 </div>
               </div>
             </div>

@@ -9,8 +9,11 @@ import Image from "next/image"
 import ReviewsSection from "@/components/sections/reviews/section"
 import CtaSection from "@/components/sections/cta/section"
 import RequestForm from "@/components/forms/request-form"
+import { getQuestsData } from "@/components/forms/request-form-server"
 
-export default function QuestsPage() {
+export default async function QuestsPage() {
+  const quests = await getQuestsData()
+
   return (
     <div className="flex flex-col gap-y-[60px] py-[60px] xl:gap-y-[140px] xl:py-[140px]">
       <section className="relative pt-[60px] sm:pt-[82px] xl:pb-[245px]">
@@ -33,7 +36,7 @@ export default function QuestsPage() {
               className="pointer-events-none -right-0 block max-w-none sm:hidden"
             />
            
-            <RequestForm className="mt-5 w-full max-w-[200px] sm:max-w-[575px]"/>
+            <RequestForm quests={quests} className="mt-5 w-full max-w-[200px] sm:max-w-[575px]"/>
           </div>
         </MaxWidthWrapper>
         <Image

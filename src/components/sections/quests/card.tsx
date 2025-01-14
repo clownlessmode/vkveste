@@ -13,6 +13,7 @@ export const revalidate = 0
 
 export interface QuestCardProps {
   label: string
+  index: number
   description: string
   type: "key" | "sword" | "skull" | "money" | "potion" | "hat" | "drink"
   difficulty: 1 | 2 | 3
@@ -46,6 +47,7 @@ const questIcons = {
 }
 
 const QuestCard = ({
+  index,
   label,
   description,
   type,
@@ -82,7 +84,7 @@ const QuestCard = ({
         {description}
       </p>
       <div className="absolute bottom-2.5 w-full flex px-[14px] inline-flex items-center gap-x-[5px] xl:gap-x-[7px] justify-between">
-        <p className="text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">ул. Лидии Базановой, д. 20, оф. 30</p>
+        <p className="text-xs leading-[14px] sm:text-[6px] md:text-[10px] xl:text-[14px] xl:leading-[19px]">ул. Лидии Базановой, д. 20, оф. {index > 2 ? '30' : '28'}</p>
         <div className="flex items-center gap-x-[5px]">
           <span className="text-xs leading-[14px] lg:text-[16px] xl:leading-[19px]">
             {players}

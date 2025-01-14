@@ -80,7 +80,7 @@ const ReviewsSection = () => {
         <div className="inline-flex w-full flex-col items-end justify-end gap-y-3 sm:flex-row sm:items-center sm:gap-2.5 lg:gap-x-5">
           <Button
             asChild
-            className="h-9 w-max px-9 transition duration-300 hover:opacity-75 sm:px-5 lg:h-[60px]"
+            className="h-12 w-max px-12 transition duration-300 hover:opacity-75 sm:px-8 lg:h-[60px]" 
             variant={"glowing"}
           >
             <Link href="https://yandex.ru/profile/69967307679">
@@ -89,7 +89,7 @@ const ReviewsSection = () => {
           </Button>
           <Button
             asChild
-            className="h-9 w-max px-9 transition duration-300 hover:opacity-75 sm:px-5 lg:h-[60px]"
+            className="h-12 w-max px-12 transition duration-300 hover:opacity-75 sm:px-8 lg:h-[60px]" 
           >
             <Link href="https://yandex.ru/profile/69967307679">
               Оставить отзыв

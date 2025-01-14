@@ -217,7 +217,7 @@ const BookingForm = React.memo(function BookingForm({
   return (
     <>
       <Dialog open={isSuccess} onOpenChange={setSuccess}>
-        <DialogContent className="!max-w-[400px] !rounded-[14px] !p-0">
+        <DialogContent className="!max-w-[400px] !rounded-[14px] !p-0 max-h-[90vh] overflow-y-auto">
           <div className="flex w-full flex-col items-center gap-y-2.5 rounded-[14px] border-[2.5px] border-[#F9800F] bg-white py-[25px]">
             <svg
               width="105"

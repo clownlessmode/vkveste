@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-brand-main text-xs leading-[15px] rounded-[8px] text-gray-100 font-semibold lg:text-2xl lg:leading-[29px] shadow-inset-default-button lg:rounded-[14px] hover:bg-[#F6A819]",
+          "bg-brand-main text-xs leading-[15px] rounded-[14px] text-gray-100 font-semibold lg:text-2xl lg:leading-[29px] shadow-inset-default-button hover:bg-[#F6A819]",
         gradient:
           "rounded-[14px] text-2xl leading-[29px] text-white font-semibold bg-gradient-to-r from-brand-main to-[#F8470F] hover:bg-[#F6A819] hover:opacity-75",
         glowing:
