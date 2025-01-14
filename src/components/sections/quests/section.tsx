@@ -38,7 +38,7 @@ async function QuestSection() {
       type: quest.statistics.type,
       difficulty: quest.statistics.difficulty,
       players: quest.statistics.players,
-      background: `http://localhost:1338${quest.cover.url}`,
+      background: `http://89.104.69.151:1338${quest.cover.url}`,
       link: `/quest/${quest.slug}`,
       order: quest.order,
     }))

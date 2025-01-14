@@ -11,7 +11,7 @@ const getBaseUrl = () => {
   }
 
   if (process.env.NODE_ENV === "development") {
-    return "http://localhost:3000/"
+    return "http://89.104.69.151:3000/"
   }
 
   // if deployed to vercel, use vercel url
