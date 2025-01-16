@@ -89,12 +89,12 @@ const QuestCard = ({
         <span className="max-w-[326px] font-bold uppercase leading-[21px] sm:text-xs sm:leading-[14px] md:text-lg lg:text-[17px] xl:text-2xl xl:leading-[30px]">
           {label}
         </span>
-        <p className="-mt-[6px] text-xs leading-[14px] sm:text-[8px] md:text-xs xl:text-[16px] xl:leading-[19px]">
+        <p className="mt-[12px] text-xs leading-[14px] sm:mt-[7.5px] sm:text-[8px] md:mt-[12px] md:text-xs lg:mt-[16px] xl:mt-[16px] xl:text-[16px] xl:leading-[19px]">
           {description}
         </p>
       </div>
 
-      <div className="absolute bottom-2.5 z-20 flex inline-flex w-full items-center justify-between gap-x-[5px] px-[14px] xl:gap-x-[7px]">
+      <div className="absolute bottom-2.5 z-20 inline-flex w-full items-center justify-between gap-x-[5px] px-[14px] xl:gap-x-[7px]">
         <p className="text-xs leading-[14px] sm:text-[6px] md:text-[10px] xl:text-[14px] xl:leading-[19px]">
           ул. Лидии Базановой, д. 20, оф. {index > 2 ? "30" : "28"}
         </p>

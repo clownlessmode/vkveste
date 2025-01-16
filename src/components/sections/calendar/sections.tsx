@@ -145,12 +145,14 @@ interface InlineQuestsProps {
   quests: Quest[]
   selectedDate: Date
   singleQuestId?: string
+  initialQuestId?: string | null
 }
 
 export function InlineQuests({
   quests,
   selectedDate,
   singleQuestId,
+  initialQuestId,
 }: InlineQuestsProps) {
   const activeQuests = useMemo(() => {
     const filteredQuests = quests.filter((quest) => !quest.disabled)
@@ -158,18 +160,25 @@ export function InlineQuests({
       ? filteredQuests.filter((quest) => quest.name === singleQuestId)
       : filteredQuests
   }, [quests, singleQuestId])
+
   const [selectedQuestId, setSelectedQuestId] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (initialQuestId) {
+      const quest = activeQuests.find((q) => q.id === initialQuestId)
+      if (quest) {
+        setSelectedQuestId(quest.id)
+      }
+    } else if (activeQuests.length > 0 && !selectedQuestId) {
+      setSelectedQuestId(activeQuests[0].id)
+    }
+  }, [activeQuests, selectedQuestId, initialQuestId])
+
   const normalizedDate = useMemo(() => {
     const date = new Date(selectedDate)
     date.setHours(0, 0, 0, 0)
     return date
   }, [selectedDate])
-
-  useEffect(() => {
-    if (activeQuests.length > 0 && !selectedQuestId) {
-      setSelectedQuestId(activeQuests[0].id)
-    }
-  }, [activeQuests, selectedQuestId])
 
   const { data: bookingsData, isLoading } = useQuery({
     queryKey: ["all-bookings"],

@@ -25,7 +25,7 @@ export default async function Home() {
           <div className="mt-[60px] w-full sm:p-6 lg:p-[50px] xl:mt-[140px] xl:pb-[69px] xl:pl-[103px]">
             <div className="w-full px-3 pb-2 sm:px-0 lg:max-w-[607px]">
               <div className="relative z-10 flex w-full flex-col px-[14px] pb-6 sm:px-0 sm:pb-5 md:gap-y-[18px] xl:gap-y-5 xl:pb-10">
-                <LogoText className="mt-[18px] hidden h-[50px] w-[509px] text-brand-main md:block" />
+                <LogoText className="mt-[18px] hidden h-[50px] w-[509px] text-brand-main md:block md:h-auto md:w-full lg:h-[50px] lg:w-[509px]" />
                 <div className="relative block h-[196px] w-full sm:hidden sm:h-[404px] md:block lg:hidden">
                   <CarouselWrapper mobile />
                 </div>
@@ -88,7 +88,7 @@ export default async function Home() {
               </span>
             </div>
             <div className="relative h-full w-full overflow-hidden rounded-lg lg:rounded-[14px]">
-            <iframe
+              <iframe
                 src="https://yandex.ru/map-widget/v1/?ll=35.916239%2C56.850903&mode=poi&poi%5Bpoint%5D=35.912228%2C56.850894&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D69967307679&utm_source=share&z=15.8"
                 width="100%"
                 height="00%"

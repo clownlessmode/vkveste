@@ -34,8 +34,11 @@ const CertificatesSection = ({
             <Image
               src={box_certificate}
               alt="box"
+              width={4060}
+              height={2612}
               placeholder="blur"
               className="z-[50] pt-20 sm:pt-40 md:pt-60 lg:pt-[171px]"
+              quality={100}
             />
           </div>
           <div className="flex flex-col items-center gap-y-[12.5px] sm:gap-y-[20px] md:gap-y-[40px] lg:gap-y-[40px]">

@@ -29,11 +29,18 @@ const NavigationBar = () => {
   }, [isOpen])
   return (
     <nav className="sticky inset-x-0 top-0 z-[250] w-full bg-gray-100 pt-4 lg:pt-[6px]">
+      <Link
+        className="mx-auto mt-[20px] block w-max sm:hidden md:block xl:hidden"
+        href="/"
+      >
+        <LogoFull className="h-10 w-[166px] lg:w-[300px]" />
+      </Link>
       <MaxWidthWrapper>
         <div className="flex w-full items-center justify-between pb-2 md:block lg:flex">
           <Link className="block w-max md:hidden xl:block" href="/">
             <LogoFull className="h-10 w-[166px] lg:w-[300px]" />
           </Link>
+
           <div className="hidden w-full items-center justify-between gap-x-5 whitespace-nowrap md:flex lg:justify-end lg:gap-x-[30px]">
             {navigation.main.map((i, index) => {
               return (
@@ -62,14 +69,12 @@ const NavigationBar = () => {
       {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-10 transition-all duration-300 ${
-          isOpen 
-            ? "visible opacity-100" 
-            : "invisible opacity-0 delay-300"
+          isOpen ? "visible opacity-100" : "invisible opacity-0 delay-300"
         }`}
         onClick={toggleMenu}
       >
         <div
-          className={`fixed right-0 top-0 block h-full pl-[30px] pr-2.5 bg-brand-main transition-all duration-300 md:hidden ${
+          className={`fixed right-0 top-0 block h-full bg-brand-main pl-[30px] pr-2.5 transition-all duration-300 md:hidden ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}

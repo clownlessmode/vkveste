@@ -17,6 +17,8 @@ import MoneyIcon from "@/icons/money-icon"
 import PotionIcon from "@/icons/potion-icon"
 import HatIcon from "@/icons/hat-icon"
 import DrinkIcon from "@/icons/drink-icon"
+import Video from "../../../../public/texas.mp4"
+import { VideoDialog } from "@/components/ui/video-dialog"
 
 interface Quest {
   name: string
@@ -143,11 +145,11 @@ export default async function QuestPage({ params }: QuestPageProps) {
         <MaxWidthWrapper className="relative">
           <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main p-2 sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px]">
             <div className="relative z-30 flex flex-col gap-y-1 lg:gap-y-5">
-              <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[54px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
+              <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[36px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
                 {data.name}
               </h1>
             </div>
-            <div className="relative z-30 mt-40 inline-flex w-full max-w-[632px] justify-between sm:mt-5 sm:flex-col md:mt-80 md:flex-row lg:mt-10 lg:flex-col xl:mt-0 xl:flex-row">
+            <div className="relative z-30 mt-6 inline-flex w-full max-w-[632px] justify-between sm:mt-auto sm:flex-col md:mt-10 md:flex-row lg:mt-10 lg:flex-col xl:mt-0 xl:flex-row">
               <div className="flex flex-col sm:gap-0.5 md:gap-4 lg:gap-y-5">
                 <span className="inline-flex items-center gap-x-5">
                   <span className="font-inter text-xs font-semibold leading-4 sm:text-[11px] md:text-lg md:leading-[22px] lg:text-2xl lg:leading-[29px]">
@@ -212,7 +214,7 @@ export default async function QuestPage({ params }: QuestPageProps) {
                 variant="gradient"
                 className="w-full max-w-[268px] hover:opacity-75"
               >
-                <Link href="/booking">Записаться</Link>
+                <Link href={`/booking?questId=${data.id}`}>Записаться</Link>
               </Button>
               <CertificatesForm>
                 <Button
@@ -226,22 +228,25 @@ export default async function QuestPage({ params }: QuestPageProps) {
               <ShareButton />
             </div>
 
-            <div className="absolute inset-0 size-full h-60 sm:h-full md:mt-32 md:h-[406px] lg:top-0 lg:mt-0 lg:h-full">
+            <div className="absolute inset-0 size-full h-60 sm:h-full md:mt-12 md:h-[406px] lg:top-0 lg:mt-0 lg:h-full">
               <div className="bg-quest-1 relative h-full w-full">
                 <div className="bg-quest-2 sm:bg-quest-1 md:bg-quest-2 lg:bg-quest-1 absolute inset-0 z-20 size-full"></div>
                 {data.name === "Техасская резня бензопилой" && (
-                  <button>
+                  <VideoDialog
+                    videoSrc="/texas.mp4"
+                    className="p-0 duration-300 animate-in fade-in"
+                  >
                     <svg
                       width="116"
                       height="116"
                       viewBox="0 0 116 116"
                       fill="none"
-                      className="absolute inset-y-0 left-1/2 right-[252px] top-1/2 z-30 size-14 -translate-x-1/2 -translate-y-1/2 sm:left-2/3 sm:-translate-x-0 md:left-1/2 md:h-auto md:w-auto md:-translate-x-1/2 lg:left-[60%] lg:translate-x-0 xl:left-[70%]"
+                      className="absolute inset-y-0 left-1/2 right-[252px] top-1/2 z-[120] size-14 -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-transform hover:scale-105 sm:left-2/3 sm:-translate-x-0 md:left-1/2 md:h-auto md:w-auto md:-translate-x-1/2 lg:left-[60%] lg:translate-x-0 xl:left-[70%]"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M21.4452 22.3369C21.5844 21.1663 21.9948 20.0443 22.6437 19.0601C23.2927 18.0759 24.1623 17.2567 25.1834 16.6676C26.2045 16.0784 27.3489 15.7356 28.5258 15.6664C29.7026 15.5972 30.8794 15.8034 31.9625 16.2688C37.4377 18.6094 49.7079 25.5837 65.2777 34.5698C80.8526 43.5611 91.8082 50.0016 96.5668 53.5641C100.629 56.611 100.64 62.6533 96.5719 65.7106C91.8597 69.2525 80.6736 75.783 64.913 84.8877C49.137 93.9924 37.3758 100.706 31.9522 103.016C27.2813 105.011 22.0535 101.985 21.4452 96.9481C20.7337 91.0605 22.2773 78.7437 22.2773 60.689C22.2773 42.6446 20.7285 28.2297 21.4452 22.3369Z"
                         fill="url(#paint0_linear_1_1536)"
                       />
@@ -254,13 +259,13 @@ export default async function QuestPage({ params }: QuestPageProps) {
                           y2="103.637"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stop-color="#FACC07" />
-                          <stop offset="0.5" stop-color="#F8BC0F" />
-                          <stop offset="1" stop-color="#F6A819" />
+                          <stop stopColor="#FACC07" />
+                          <stop offset="0.5" stopColor="#F8BC0F" />
+                          <stop offset="1" stopColor="#F6A819" />
                         </linearGradient>
                       </defs>
                     </svg>
-                  </button>
+                  </VideoDialog>
                 )}
                 <div className="absolute inset-0 z-10 size-full">
                   <Image

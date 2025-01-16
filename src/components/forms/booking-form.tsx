@@ -217,7 +217,7 @@ const BookingForm = React.memo(function BookingForm({
   return (
     <>
       <Dialog open={isSuccess} onOpenChange={setSuccess}>
-        <DialogContent className="max-h-[90vh] !max-w-[400px] overflow-y-auto !rounded-[14px] !p-0">
+        <DialogContent className="max-h-[90vh] !max-w-[320px] overflow-y-auto !rounded-[14px] !p-0">
           <div className="flex w-full flex-col items-center gap-y-2.5 rounded-[14px] border-[2.5px] border-[#F9800F] bg-white py-[25px]">
             <svg
               width="105"
@@ -246,8 +246,10 @@ const BookingForm = React.memo(function BookingForm({
                 </linearGradient>
               </defs>
             </svg>
-            <span className="text-[24px] font-semibold leading-[29.4px] text-black">
-              Успешно забронировано
+            <span className="text-center text-[24px] font-semibold leading-[24.4px] text-black">
+              Успешно
+              <br />
+              забронировано
             </span>
           </div>
         </DialogContent>

@@ -1,5 +1,7 @@
 "use client"
 
+import { toast } from "sonner"
+
 interface ShareButtonProps {
   className?: string
 }
@@ -9,6 +11,33 @@ export function ShareButton({ className }: ShareButtonProps) {
     <button
       onClick={() => {
         navigator.clipboard.writeText(window.location.href)
+        toast.success(
+          <div className="flex items-center gap-x-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z"
+                fill="#F8BC0F"
+              />
+            </svg>
+            <span className="font-inter text-sm text-white">
+              Ссылка скопирована в буфер обмена
+            </span>
+          </div>,
+          {
+            style: {
+              background: "#0D0D0D",
+              border: "2px solid #F8BC0F",
+              color: "white",
+            },
+            duration: 2000,
+          }
+        )
       }}
       className={`hover:bg-accent/50 ${className}`}
     >
