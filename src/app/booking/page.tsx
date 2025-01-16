@@ -8,7 +8,7 @@ import { MaxWidthWrapper } from "@/components/width-wrapper"
 import fetchFromStrapi from "@/lib/strapi"
 import { format } from "date-fns"
 import { ru } from "date-fns/locale"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 
 interface StrapiQuest {
@@ -38,7 +38,7 @@ interface TransformedQuest {
   }>
 }
 
-export default function QuestsPage() {
+function BookingContent() {
   const searchParams = useSearchParams()
   const initialQuestId = searchParams.get("questId")
 
@@ -118,5 +118,19 @@ export default function QuestsPage() {
         </p>
       </MaxWidthWrapper>
     </div>
+  )
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-brand-main" />
+        </div>
+      }
+    >
+      <BookingContent />
+    </Suspense>
   )
 }
