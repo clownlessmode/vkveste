@@ -30,7 +30,7 @@ const NavigationBar = () => {
   return (
     <nav className="sticky inset-x-0 top-0 z-[250] w-full bg-gray-100 pt-4 lg:pt-[6px]">
       <Link
-        className="mx-auto mt-[20px] block w-max sm:hidden md:block xl:hidden"
+        className="mx-auto mt-[20px] hidden w-max md:block xl:hidden"
         href="/"
       >
         <LogoFull className="h-10 w-[166px] lg:w-[300px]" />

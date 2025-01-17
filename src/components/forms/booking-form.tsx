@@ -104,7 +104,7 @@ const BookingForm = React.memo(function BookingForm({
   const [isSuccess, setSuccess] = useState<boolean>(false)
   const [isMainDialogOpen, setMainDialogOpen] = useState<boolean>(false)
 
-  const API_BASE_URL = `http://89.104.69.151:1338`
+  const API_BASE_URL = `http://localhost:1338`
 
   const mutation = useMutation({
     mutationFn: async ({

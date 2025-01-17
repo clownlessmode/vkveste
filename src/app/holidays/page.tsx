@@ -17,12 +17,12 @@ export default async function HolidaysPage() {
         <Image
           src={baloons}
           alt="baloons"
-          quality={90}
+          quality={100}
           placeholder="blur"
-          className="absolute -right-[120px] top-[0px] z-0 block h-[400px] w-auto sm:-right-[160px] sm:h-[400px] md:-right-[120px] md:h-[600px] lg:-right-[120px] lg:h-[600px] xl:-right-[20px] xl:h-[600px]"
+          className="absolute -right-[120px] top-[0px] z-0 block h-[400px] w-auto origin-right sm:-right-[160px] sm:h-[400px] md:-right-[120px] md:h-[600px] lg:-right-[120px] lg:h-[600px] xl:-right-[20px] xl:h-[800px]"
         />
         <MaxWidthWrapper>
-          <div className="relative z-10 flex max-w-[65vw] flex-col gap-y-4 sm:max-w-[75vw] md:max-w-[63vw] md:gap-y-6 lg:max-w-[65vw] lg:gap-y-10 xl:max-w-[1042px]">
+          <div className="relative z-10 flex max-w-[65vw] flex-col gap-y-4 sm:max-w-[75vw] md:max-w-[63vw] md:gap-y-6 lg:max-w-[65vw] lg:gap-y-10 xl:w-[60vw] xl:max-w-[1042px]">
             <h1 className="text-[28px] font-bold text-brand-main sm:text-[33px] md:text-[54px] lg:text-[72px] lg:leading-[89px]">
               Праздники ВКвесте
             </h1>

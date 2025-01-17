@@ -14,7 +14,7 @@ async function getCarouselItems() {
   return response.data.map((slide: any) => ({
     id: slide.id,
     url: slide.image,
-    //url: `http://89.104.69.151:1338/uploads/2_6d68ff2a53.png`,
+    //url: `http://localhost:1338/uploads/2_6d68ff2a53.png`,
   }))
 
   return response

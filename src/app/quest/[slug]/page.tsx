@@ -145,11 +145,11 @@ export default async function QuestPage({ params }: QuestPageProps) {
         <MaxWidthWrapper className="relative">
           <div className="md:border-tranparent relative flex h-full w-full flex-col overflow-hidden border-brand-main p-2 sm:rounded-xl sm:border-2 sm:p-6 sm:shadow-custom-shadow md:gap-5 md:border-transparent md:p-12 md:shadow-none lg:border-brand-main lg:p-12 lg:shadow-custom-shadow xl:max-h-[697px] xl:gap-y-20 xl:rounded-[30px] xl:px-[98px] xl:pb-[81px] xl:pt-[49px]">
             <div className="relative z-30 flex flex-col gap-y-1 lg:gap-y-5">
-              <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[36px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
+              <h1 className="font-inter text-[28px] font-bold leading-8 text-brand-main sm:text-[33px] sm:leading-10 md:text-[54px] md:leading-[64px] xl:text-[72px] xl:leading-[87px]">
                 {data.name}
               </h1>
             </div>
-            <div className="relative z-30 mt-6 inline-flex w-full max-w-[632px] justify-between sm:mt-auto sm:flex-col md:mt-10 md:flex-row lg:mt-10 lg:flex-col xl:mt-0 xl:flex-row">
+            <div className="relative z-30 mt-40 inline-flex w-full max-w-[632px] justify-between sm:mt-5 sm:flex-col md:mt-[240px] md:flex-row lg:mt-10 lg:flex-col xl:mt-0 xl:flex-row">
               <div className="flex flex-col sm:gap-0.5 md:gap-4 lg:gap-y-5">
                 <span className="inline-flex items-center gap-x-5">
                   <span className="font-inter text-xs font-semibold leading-4 sm:text-[11px] md:text-lg md:leading-[22px] lg:text-2xl lg:leading-[29px]">
@@ -182,7 +182,6 @@ export default async function QuestPage({ params }: QuestPageProps) {
                   </span>
                 </span>
               </div>
-
               <div className="flex flex-col sm:gap-0.5 md:gap-1.5 lg:mt-8 lg:gap-y-1">
                 <span className="bg-gradient-to-b from-brand-main via-[#F8BC0F] to-[#F6A819] bg-clip-text pl-1 font-inter text-sm font-semibold text-transparent sm:text-[17px] md:text-2xl md:leading-8 lg:text-[36px] xl:leading-[44px]">
                   {ratings[data.order - 1]?.rating ?? 0}
@@ -269,14 +268,29 @@ export default async function QuestPage({ params }: QuestPageProps) {
                 )}
                 <div className="absolute inset-0 z-10 size-full">
                   <Image
-                    src={`http://89.104.69.151:1338${data.cover.url}`}
+                    src={`/tessst.png`}
                     alt="Image"
                     className="size-full object-cover"
                     width={2400}
                     height={1200}
                     quality={100}
                   />
-                  <div className="absolute inset-0 bg-black/50" />
+                  <div className="absolute inset-0 size-full">
+                    <div
+                      className="absolute inset-0 hidden size-full sm:block lg:block"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(21, 21, 21, 1) 34%, rgba(21, 21, 21, 0.5) 76%, rgba(21, 21, 21, 0.25) 100%)",
+                      }}
+                    />
+                    <div
+                      className="absolute -inset-[2px] block sm:hidden lg:hidden"
+                      style={{
+                        background:
+                          "linear-gradient(to top, rgba(21, 21, 21, 1) 0%, rgba(21, 21, 21, 0.5) 50%, rgba(21, 21, 21, 1) 100%)",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

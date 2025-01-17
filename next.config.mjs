@@ -3,14 +3,14 @@ const nextConfig = {
   remotePatterns: [
     {
       protocol: "http",
-      hostname: "89.104.69.151",
+      hostname: "localhost",
     },
   ],
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["tvr.mir-kvestov.ru", "89.104.69.151", "89.104.69.151"],
+    domains: ["tvr.mir-kvestov.ru", "localhost", "localhost"],
   },
   webpack: (config) => {
     config.module.rules.push({
