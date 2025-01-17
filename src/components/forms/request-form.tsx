@@ -170,7 +170,7 @@ export default function RequestForm({ className, quests }: RequestFormProps) {
               />
 
               <div className="flex w-full flex-col gap-y-1.5">
-                <p className="text-center text-[24px] font-semibold leading-[29px] text-black">
+                <p className="hidden text-center text-[24px] font-semibold leading-[29px] text-black md:block">
                   Укажите тему
                 </p>
                 <div className="flex flex-col gap-x-2.5 gap-y-2.5 md:grid md:grid-cols-4">
@@ -179,7 +179,7 @@ export default function RequestForm({ className, quests }: RequestFormProps) {
                       key={quest.id}
                       onClick={() => form.setValue("questName", quest.label)}
                       className={cn(
-                        "flex h-[57px] w-full cursor-pointer flex-row items-center justify-between rounded-[14px] bg-[#EEEEEE] px-[40px] transition-all md:h-[72px] md:flex-col md:p-[10px]",
+                        "flex h-[40px] w-full cursor-pointer flex-row items-center justify-between rounded-[8px] bg-[#EEEEEE] px-2.5 transition-all md:h-[72px] md:flex-col md:rounded-[14px] md:p-[10px]",
                         form.watch("questName") === quest.label &&
                           "ring-2 ring-brand-main"
                       )}
@@ -195,7 +195,7 @@ export default function RequestForm({ className, quests }: RequestFormProps) {
                               index < quest.difficulty
                                 ? "text-brand-main"
                                 : "text-[#6A6A6A]",
-                              "flex flex-row gap-1"
+                              "gap- flex flex-row"
                             )}
                           >
                             {questIcons[quest.type]}
@@ -207,7 +207,7 @@ export default function RequestForm({ className, quests }: RequestFormProps) {
                   <div
                     onClick={() => form.setValue("questName", "Прочее")}
                     className={cn(
-                      "flex h-[57px] w-full cursor-pointer items-center justify-center rounded-[14px] bg-[#EEEEEE] transition-all md:h-[72px]",
+                      "flex h-[40px] w-full cursor-pointer flex-row items-center justify-center rounded-[8px] bg-[#EEEEEE] px-2.5 transition-all md:h-[72px] md:flex-col md:rounded-[14px] md:p-[10px]",
                       form.watch("questName") === "Прочее" &&
                         "ring-2 ring-brand-main"
                     )}

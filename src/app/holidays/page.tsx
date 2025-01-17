@@ -42,10 +42,12 @@ export default async function HolidaysPage() {
               Ваши лучшие воспоминания начинаются здесь!
             </p>
           </div>
-          <div className="mt-4">
-            <span className="text-xs leading-[29px] md:text-lg lg:text-2xl">
-              Забронировать банкетную зону
-            </span>
+          <div className="mt-4 w-full">
+            <div className="flex justify-center sm:justify-start">
+              <span className="w-full text-center text-xs leading-[29px] sm:text-left md:text-lg lg:text-2xl">
+                Забронировать банкетную зону
+              </span>
+            </div>
             <div className="mx-auto mt-2 flex max-w-[200px] flex-col gap-x-3 gap-y-2 sm:max-w-full sm:flex-row md:mx-0 md:flex-col lg:mt-4 lg:max-w-[384px] lg:max-w-[512px] lg:gap-y-5">
               <Button size="lg" variant="outline" className="w-full">
                 +7 (4822) 630-444
