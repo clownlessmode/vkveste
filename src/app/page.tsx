@@ -78,7 +78,7 @@ export default async function Home() {
             alt="pattern"
             className="absolute -top-5 w-full sm:-left-5 md:-top-10 xl:-top-16"
           />
-          <div className="relative flex h-full w-full flex-col items-start gap-x-10 gap-y-3 overflow-hidden rounded-xl border border-white/50 bg-gray-100 px-4 pb-5 pt-3 sm:mt-5 sm:px-5 sm:pb-5 sm:pt-4 md:mt-5 md:rounded-[14px] md:px-9 md:pb-9 md:pt-6 lg:p-10 xl:flex-row">
+          <div className="relative flex h-full w-full flex-col items-start gap-x-10 gap-y-3 overflow-hidden rounded-[8px] border border-white/50 bg-gray-100 px-4 pb-5 pt-3 sm:mt-5 sm:px-5 sm:pb-5 sm:pt-4 md:mt-5 md:rounded-[14px] md:px-9 md:pb-9 md:pt-6 lg:p-10 xl:flex-row">
             <div className="relative z-10 flex !h-max flex-col gap-y-[5px] pb-5 lg:h-full lg:pb-10 xl:hidden">
               <span className="text-xs font-bold md:text-lg lg:text-2xl lg:leading-[30px]">
                 Г. Тверь

@@ -26,7 +26,7 @@ const ReviewCard = ({
     />
   ))
   return (
-    <div className="flex flex-col gap-2 rounded-[14px] border border-white/50 bg-gray-100 p-3 lg:gap-y-4 lg:pb-3 lg:pl-5 lg:pr-7 lg:pt-[18px]">
+    <div className="flex flex-col gap-2 rounded-[8px] border border-white/50 bg-gray-100 p-3 md:rounded-[14px] lg:gap-y-4 lg:pb-3 lg:pl-5 lg:pr-7 lg:pt-[18px]">
       <div className="inline-flex items-center gap-1.5 lg:gap-x-3">
         <Image
           src={pfp}

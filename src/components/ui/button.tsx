@@ -10,20 +10,20 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-brand-main text-xs leading-[15px] rounded-[14px] text-gray-100 font-semibold lg:text-2xl lg:leading-[29px] shadow-inset-default-button hover:bg-[#F6A819]",
+          "bg-brand-main text-xs leading-[15px] rounded-[8px] md:rounded-[14px] text-gray-100 font-semibold lg:text-2xl lg:leading-[29px] shadow-inset-default-button hover:bg-[#F6A819]",
         gradient:
-          "rounded-[14px] text-2xl leading-[29px] text-white font-semibold bg-gradient-to-r from-brand-main to-[#F8470F] hover:bg-[#F6A819] hover:opacity-75",
+          "rounded-[8px] md:rounded-[14px] text-2xl leading-[29px] text-white font-semibold bg-gradient-to-r from-brand-main to-[#F8470F] hover:bg-[#F6A819] hover:opacity-75",
         glowing:
-          "rounded-[14px] border-2 border-transparent hover:text-black hover:bg-[#F6A819] border-image-gradient-border shadow-custom-shadow font-semibold text-[#F7AF16] text-xs leading-[15px]  lg:leading-[29px] lg:text-2xl border-2 border-brand-secondary",
+          "rounded-[8px] md:rounded-[14px] border-2 border-transparent hover:text-black hover:bg-[#F6A819] border-image-gradient-border shadow-custom-shadow font-semibold text-[#F7AF16] text-xs leading-[15px]  lg:leading-[29px] lg:text-2xl border-2 border-brand-secondary",
         destructive:
-          "bg-red-500 text-zinc-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
+          "bg-red-500 rounded-[8px] md:rounded-[14px] text-zinc-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
         outline:
-          "rounded-[14px] text-2xl hover:bg-[#F6A819] hover:text-black hover:border-transparent leading-[29px] text-white font-semibold bg-black border border-white/50",
+          "rounded-[8px] md:rounded-[14px] text-2xl hover:bg-[#F6A819] hover:text-black hover:border-transparent leading-[29px] text-white font-semibold bg-black border border-white/50",
         secondary:
-          "bg-zinc-100 text-zinc-900 shadow-sm hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
+          "bg-zinc-100 rounded-[8px] md:rounded-[14px] text-zinc-900 shadow-sm hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
         ghost:
-          "hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
-        link: "text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-50",
+          "hover:bg-zinc-100 rounded-[8px] md:rounded-[14px]  hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
+        link: "text-zinc-900 rounded-[8px] md:rounded-[14px] underline-offset-4 hover:underline dark:text-zinc-50",
       },
       size: {
         default: "h-[55px] px-[26px] py-[13px]",

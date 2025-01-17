@@ -59,7 +59,7 @@ async function QuestSection() {
               <div className="hidden max-w-[311px] sm:block sm:max-w-none">
                 <div
                   className={cn(
-                    "relative flex h-40 w-full flex-col items-center justify-center gap-y-4 rounded-[14px] border-[0.5px] border-white/50 bg-[#151515] sm:h-[103px] lg:h-[220px]"
+                    "relative flex h-40 w-full flex-col items-center justify-center gap-y-4 rounded-[8px] border-[0.5px] border-white/50 bg-[#151515] sm:h-[103px] md:rounded-[14px] lg:h-[220px]"
                   )}
                   // style={{
                   //   clipPath: "polygon(0 0, 100% 1%, 100% 89%, 0 70%)",
@@ -78,7 +78,7 @@ async function QuestSection() {
               <div className="hidden max-w-[311px] sm:max-w-none xl:block">
                 <div
                   className={cn(
-                    "relative flex h-40 w-full flex-col items-center justify-center gap-y-4 rounded-[14px] border-[0.5px] border-white/50 bg-[#151515] sm:h-[103px] lg:h-[220px]"
+                    "relative flex h-40 w-full flex-col items-center justify-center gap-y-4 rounded-[8px] border-[0.5px] border-white/50 bg-[#151515] sm:h-[103px] md:rounded-[14px] lg:h-[220px]"
                   )}
                   // style={{
                   //   clipPath:

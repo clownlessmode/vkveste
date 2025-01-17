@@ -68,7 +68,7 @@ const QuestCard = ({
     <Link
       href={link}
       className={cn(
-        "group relative flex h-[161px] w-full max-w-[311px] flex-col items-center justify-center gap-y-2 overflow-hidden rounded-[14px] border-[0.5px] border-white/50 transition-all duration-300 hover:scale-105 sm:h-[103px] sm:max-w-none sm:gap-y-1 md:h-40 md:gap-3 lg:h-[220px] xl:w-[420px] xl:gap-y-4"
+        "group relative flex h-[161px] w-full max-w-[311px] flex-col items-center justify-center gap-y-2 overflow-hidden rounded-[8px] border-[0.5px] border-white/50 transition-all duration-300 hover:scale-105 sm:h-[103px] sm:max-w-none sm:gap-y-1 md:h-40 md:gap-3 md:rounded-[14px] lg:h-[220px] xl:w-[420px] xl:gap-y-4"
       )}
     >
       {/* Фоновое изображение с затемнением */}
@@ -83,7 +83,7 @@ const QuestCard = ({
 
       {/* Контент */}
       <div className="relative z-20 flex flex-col items-center">
-        <div className="inline-flex items-center sm:mb-1">
+        <div className="mb-3 inline-flex items-center sm:mb-1">
           {difficultyIcons}
         </div>
         <span className="max-w-[326px] font-bold uppercase leading-[21px] sm:text-xs sm:leading-[14px] md:text-lg lg:text-[17px] xl:text-2xl xl:leading-[30px]">
